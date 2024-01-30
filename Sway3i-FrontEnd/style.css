@@ -1,0 +1,80 @@
+@import url('https://fonts.cdnfonts.com/css/metropolis-2');
+
+:root{
+    --white-color: #fff;
+    --dark-color: #0A033C;
+    --primary-color: #8442cf;      
+    --background-color: #F7F5FA;
+    --btn-text-color : white;
+    --text-color: #5D5A6F;
+    --orange-color : #FF6652;
+}
+
+*{
+    font-family: 'Metropolis';
+    background-color: var(--background-color);
+}
+
+/* Navbar */
+.myBtn {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 7px 25px 7px 25px;
+    font-weight: bold;
+    color: var(--btn-text-color);
+}
+.myBtn2 {
+    background-color: transparent;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 7px 25px 7px 25px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+
+.title-pill{
+    color: var(--orange-color);
+    background-color: var(--white-color);
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.title-big{
+    font-weight: bold;
+}
+
+.hero-description{
+    color: var(--text-color);
+    font-size: 18px;
+}
+#home-search-btn{
+    background-color: #9C4DF4;
+    border-radius: 14px;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    height: 52px;
+    outline: none;
+    border: none;
+    width: 143px;
+}
+#home-search-btn i {
+    font-size: 20px;
+}
+#hr-search-home{
+    width: 1px;
+    height: 40px;
+    border: solid 1px #DADADA;
+}
+#home-search-input{
+    height: 55px;
+}

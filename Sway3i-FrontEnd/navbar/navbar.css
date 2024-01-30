@@ -1,0 +1,21 @@
+/* Navbar */
+.myBtn {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 7px 25px 7px 25px;
+    font-weight: bold;
+    color: var(--btn-text-color);
+}
+.myBtn2 {
+    background-color: transparent;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 7px 25px 7px 25px;
+    font-weight: bold;
+    color: var(--primary-color);
+}

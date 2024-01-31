@@ -11,6 +11,7 @@
 </head>
 <body style="background-color: #F7F5FA;">
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg ms-5 me-5">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -83,22 +84,23 @@
 
                 <div class="d-flex">
                     <button type="button" class="myBtn2 me-2">login</button>
-                    <button type="button" class="myBtn">Sign up</button>
+                    <button type="button" class="myBtn">SignUp</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="d-flex align-items-center justify-content-center ms-5 me-5 mt-3">
+    <!-- Hero -->
+    <section class="d-flex align-items-center justify-content-center ms-5 me-5 mt-3" id="hero-section">
 
-        <div class="w-50">
+        <div class="w-50" id="hero-left">
             <p class="title-pill">Never Stop Learning</p>
             <h1 class="title-big">Grow up your skills by using Sway3i</h1>
             <p class="hero-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas nemo quos sunt, aliquid consequuntur enim accusamus esse neque illo reiciendis tenetur perferendis, excepturi, mollitia voluptatem odit. Distinctio eveniet alias cumque.</p>
 
-            <div class="p-1 border bg-white border-0 rounded-3">
+            <div class="p-1 border bg-white border-0 rounded-3 ">
                 
-                <div class="input-group d-flex flex-row justify-content-between align-items-center bg-white">
+                <div class="input-group d-flex flex-row justify-content-between align-items-center bg-white" id="hr-search-bar">
                     <div class="form-group">
                         <select class="form-control p-3 border-0" id="exampleSelect">
                             <option selected disabled hidden>Select an option ⇩</option>
@@ -115,13 +117,49 @@
             </div>
         </div>
 
-        <div>
+        <div id="hero-img">
             
             <img src="https://media.discordapp.net/attachments/1016377773373259796/1201794684947800094/image.png?ex=65cb1d85&is=65b8a885&hm=803c778467335e9cd905c1d65790c86498d2590ea2863abdb23e450d29cce38f&=&format=webp&quality=lossless&width=677&height=671" alt="">
 
         </div>
 
     </section>
+    
+    <!-- High quality classes  -->
+    <section class="mt-5 d-flex align-items-center justify-content-center flex-column">
+        <div class="w-50 text-center">
+            <h1 class="fw-bolder">High quality classes, either in person or remotely</h1>
+        </div>
+        <div class="w-75 mt-4 text-center">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut error sit iusto cum in blanditiis? Atque deleniti, aliquid ipsum ex omnis iure quo illum vel animi eum delectus amet, voluptatum quaerat nostrum saepe repellat. Facilis omnis facere reiciendis officiis voluptatibus?</p>
+        </div>
+        
+        <div class="mt-4">
+            <button id="home-search-btn">Visit Courses</button>
+        </div>
+
+        <div id="stars">
+            <img src="https://media.discordapp.net/attachments/1016377773373259796/1201887050236952636/stqrs.png?ex=65cb738a&is=65b8fe8a&hm=3fd2ac4d05625e903db14689594dbe0a5e89ec746ced45031a1f74c43fc95ee7&=&format=webp&quality=lossless" alt="stars">
+        </div>
+
+        <div class="border p-4 bg-white rounded-5" id="teacher">
+            <img src="https://media.discordapp.net/attachments/1016377773373259796/1201877045651705867/image.png?ex=65cb6a39&is=65b8f539&hm=624f7ca3f3dc88a4d97fc75fc472dd5717654f6212fc13221e7eeadc650cf731&=&format=webp&quality=lossless&width=1234&height=671" alt="teacher teaching students online">
+        </div>
+        
+        <div class="mt-4 d-flex flex-column flex-lg-row ">
+            <div class="bg-white p-3 rounded-3 me-3">
+                <img class="bg-white" src="https://media.discordapp.net/attachments/1016377773373259796/1202162143676604466/speakericon.png?ex=65cc73be&is=65b9febe&hm=487599ee3719eef6610dc23009b746330308658ab28d529edf7ff48fdc3d2365&=&format=webp&quality=lossless" width="50" alt="Offline classes">
+                <span class="bg-white fw-bolder ms-3">Offline Classes</span>
+            </div>
+            
+            <div class="bg-white p-3 rounded-3 ms-3">
+                <img class="bg-white" src="https://media.discordapp.net/attachments/1016377773373259796/1202162143454298142/playicon.png?ex=65cc73be&is=65b9febe&hm=f8c240b86c41d817f71167228daaaf48df86369ca70272619b38091ef4c00e23&=&format=webp&quality=lossless" width="50" alt="Online classes">
+                <span class="bg-white fw-bolder ms-3">Online Classes</span>
+            </div>
+        </div>
+        
+    </section>
+
     
 </body>
 </html>

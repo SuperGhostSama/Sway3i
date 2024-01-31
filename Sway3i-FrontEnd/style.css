@@ -56,6 +56,8 @@
     color: var(--text-color);
     font-size: 18px;
 }
+
+
 #home-search-btn{
     background-color: #9C4DF4;
     border-radius: 14px;
@@ -67,14 +69,46 @@
     border: none;
     width: 143px;
 }
+
 #home-search-btn i {
     font-size: 20px;
 }
+
 #hr-search-home{
     width: 1px;
     height: 40px;
     border: solid 1px #DADADA;
 }
+
 #home-search-input{
     height: 55px;
+}
+
+@media (max-width: 1300px) {
+
+    #hero-img{
+        display: none;
+    }
+
+    #hero-left{
+        width: 100%!important;
+    }
+}
+
+@media (max-width: 560px) {
+    #hr-search-bar {
+        flex-direction: column;
+    }
+}
+
+/* High Quality classes */
+
+#stars{
+    position: relative;
+    left: 631px;
+    top: 133px;
+}
+
+#teacher{
+    z-index: 999999999;
 }

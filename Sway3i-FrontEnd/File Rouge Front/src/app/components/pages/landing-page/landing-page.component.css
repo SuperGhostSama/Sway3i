@@ -1,0 +1,135 @@
+/* Hero Section */
+
+.title-pill{
+    color: var(--orange-color);
+    background-color: var(--white-color);
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.title-big{
+    font-weight: bold;
+}
+
+.hero-description{
+    color: var(--text-color);
+    font-size: 18px;
+}
+
+
+#home-search-btn{
+    background-color: #9C4DF4;
+    border-radius: 14px;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    height: 52px;
+    outline: none;
+    border: none;
+    width: 143px;
+}
+
+#home-search-btn i {
+    font-size: 20px;
+}
+
+#hr-search-home{
+    width: 1px;
+    height: 40px;
+    border: solid 1px #DADADA;
+}
+
+#home-search-input{
+    height: 55px;
+}
+
+@media (max-width: 1300px) {
+
+    #hero-img{
+        display: none;
+    }
+
+    #hero-left{
+        width: 100%!important;
+    }
+}
+
+@media (max-width: 560px) {
+    #hr-search-bar {
+        flex-direction: column;
+    }
+}
+
+/* High Quality classes */
+
+#stars{
+    position: relative;
+    left: 631px;
+    top: 133px;
+}
+
+#teacher{
+    z-index: 999999999;
+}
+
+/* Qualified lessons for students */
+/* Component */
+#button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #000; /* Set your desired text color */
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+#button:hover {
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    border-radius: 10px;
+}
+
+#btn-purple {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #6B38FB;
+    background-color: #FFFFFF; 
+    border: 2px solid #6B38FB;
+    border-radius: 10px; 
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    font-weight: bold;
+}
+
+#btn-purple:hover {
+    color: #FFFFFF; 
+    background-color: #6B38FB; 
+}
+
+#btn-purple-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #6B38FB; 
+    border: 2px solid #6B38FB;
+    border-radius: 10px; 
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    font-weight: bold;
+}
+
+#btn-purple-secondary:hover {
+    color: #6B38FB; 
+    background-color: #ffffff; 
+}
+
+#join-courses{
+    background-color: var(--beige-color);
+}

@@ -1,0 +1,18 @@
+@import url('https://fonts.cdnfonts.com/css/metropolis-2');
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+:root{
+    --white-color: #fff;
+    --dark-color: #0A033C;
+    --primary-color: #8442cf;      
+    --background-color: #F7F5FA;
+    --btn-text-color : white;
+    --text-color: #5D5A6F;
+    --orange-color : #FF6652;
+    --beige-color : #EDE9F2;
+}
+
+*{
+    font-family: 'Metropolis';
+    background-color: var(--background-color);
+}

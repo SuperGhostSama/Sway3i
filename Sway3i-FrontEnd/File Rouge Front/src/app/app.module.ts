@@ -18,6 +18,7 @@ import { NewsLetterComponent } from './components/utils/news-letter/news-letter.
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { AllMentorsPageComponent } from './components/pages/all-mentors-page/all-mentors-page.component';
 import { MentorsCardsComponent } from './components/utils/mentors-cards/mentors-cards.component';
+import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-page/join-as-teacher-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MentorsCardsComponent } from './components/utils/mentors-cards/mentors-
     NewsLetterComponent,
     LandingPageComponent,
     AllMentorsPageComponent,
-    MentorsCardsComponent
+    MentorsCardsComponent,
+    JoinAsTeacherPageComponent
   ],
   imports: [
     BrowserModule,

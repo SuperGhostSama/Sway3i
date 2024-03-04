@@ -8,6 +8,7 @@ import { DasboardLayoutComponent } from './components/layout/dasboard-layout/das
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { AllMentorsPageComponent } from './components/pages/all-mentors-page/all-mentors-page.component';
 import { MentorsCardsComponent } from './components/utils/mentors-cards/mentors-cards.component';
+import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-page/join-as-teacher-page.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
         children: [
           { path : '' , component: MentorsCardsComponent},
         ]},
+      { path: 'join-as-teacher', component: JoinAsTeacherPageComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
     ],

@@ -21,6 +21,7 @@ import { MentorsCardsComponent } from './components/utils/mentors-cards/mentors-
 import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-page/join-as-teacher-page.component';
 import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
 import { CoursesCardsComponent } from './components/utils/courses-cards/courses-cards.component';
+import { CoursesPricingComponent } from './components/pages/courses-pricing/courses-pricing.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CoursesCardsComponent } from './components/utils/courses-cards/courses-
     MentorsCardsComponent,
     JoinAsTeacherPageComponent,
     CoursesListPageComponent,
-    CoursesCardsComponent
+    CoursesCardsComponent,
+    CoursesPricingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,65 @@
+.pricing-table {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+  }
+
+  .pricing-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .pricing-card:hover {
+    transform: scale(1.05);
+  }
+
+  .pricing-card h2 {
+    color: #333;
+  }
+
+  .pricing-card p {
+    color: #777;
+    margin-bottom: 20px;
+  }
+
+  
+#btn-purple {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #6B38FB;
+    background-color: #FFFFFF; 
+    border: 2px solid #6B38FB;
+    border-radius: 10px; 
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    font-weight: bold;
+}
+
+#btn-purple:hover {
+    color: #FFFFFF; 
+    background-color: #6B38FB; 
+}
+
+/* Green Check Mark */
+.green-check::before {
+    content: "\2713"; /* Unicode character for a check mark */
+    color: #28a745; /* Green color */
+    font-size: 1rem;
+    padding-right: 5px;
+    background-color: white;
+  }
+  
+  /* Red X */
+  .red-x::before {
+    content: "\2717"; /* Unicode character for a cross mark */
+    color: #dc3545; /* Red color */
+    font-size: 1rem;
+    padding-right: 5px;
+    background-color: white;
+  }
+  

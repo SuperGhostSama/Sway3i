@@ -28,8 +28,8 @@
                 <p class="w-75 mt-4" style="font-weight: 400;">Teaching is a vital and admirable career. As such, it comes with quite a bit of responsibility, both in practice and in preparation with many skills required to be a teacher. The following steps provide a general breakdown of the requirements for teachers:</p>
 
                 <div>
-                    <a class="custom-button" (click)="showInstructorRequirements()">Instructor Requirements</a>
-                    <a class="custom-button" (click)="showInstructorRules()">Instructor Rules</a>
+                    <a class="custom-button" [ngClass]="{'active-custom-button active-custom-button-underline' : isRulesVisible==true}" (click)="showInstructorRequirements()">Instructor Requirements</a>
+                    <a class="custom-button" [ngClass]="{'active-custom-button active-custom-button-underline' : isRulesVisible==false}"  (click)="showInstructorRules()">Instructor Rules</a>
                   
                     <div class="mt-4" id="instructor-list">
                       <p class="fw-bold"><span class="orange-circle"></span>{{ rule1 }}</p>

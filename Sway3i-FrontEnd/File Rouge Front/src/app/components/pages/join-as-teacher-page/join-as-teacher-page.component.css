@@ -5,6 +5,7 @@
     padding: 10px 20px;
     text-decoration: none;
     color: black;
+    cursor: pointer;
     position: relative;
 }
 
@@ -19,12 +20,17 @@
     background-color: black;
     transition: background-color 0.3s;
 }
+.active-custom-button-underline::before{
+    background-color: #ff6652!important;
+}
 
 /* Change text color and line color on hover */
 .custom-button:hover {
     color: #ff6652;
 }
-
+.active-custom-button {
+    color: #ff6652;
+}
 .custom-button:hover::before {
     background-color: #ff6652;
 }

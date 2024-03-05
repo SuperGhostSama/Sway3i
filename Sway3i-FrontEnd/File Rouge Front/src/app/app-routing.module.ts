@@ -12,6 +12,7 @@ import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-p
 import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
 import { CoursesCardsComponent } from './components/utils/courses-cards/courses-cards.component';
 import { CoursesPricingComponent } from './components/pages/courses-pricing/courses-pricing.component';
+import { AboutCoursePageComponent } from './components/pages/about-course-page/about-course-page.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
           {path : '' , component: CoursesCardsComponent}
         ]},
       { path: 'courses-pricing', component: CoursesPricingComponent },
+      { path: 'about-course', component: AboutCoursePageComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
     ],

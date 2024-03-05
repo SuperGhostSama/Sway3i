@@ -22,6 +22,7 @@ import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-p
 import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
 import { CoursesCardsComponent } from './components/utils/courses-cards/courses-cards.component';
 import { CoursesPricingComponent } from './components/pages/courses-pricing/courses-pricing.component';
+import { AboutCoursePageComponent } from './components/pages/about-course-page/about-course-page.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CoursesPricingComponent } from './components/pages/courses-pricing/cour
     JoinAsTeacherPageComponent,
     CoursesListPageComponent,
     CoursesCardsComponent,
-    CoursesPricingComponent
+    CoursesPricingComponent,
+    AboutCoursePageComponent
   ],
   imports: [
     BrowserModule,

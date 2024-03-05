@@ -19,6 +19,8 @@ import { LandingPageComponent } from './components/pages/landing-page/landing-pa
 import { AllMentorsPageComponent } from './components/pages/all-mentors-page/all-mentors-page.component';
 import { MentorsCardsComponent } from './components/utils/mentors-cards/mentors-cards.component';
 import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-page/join-as-teacher-page.component';
+import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
+import { CoursesCardsComponent } from './components/utils/courses-cards/courses-cards.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-p
     LandingPageComponent,
     AllMentorsPageComponent,
     MentorsCardsComponent,
-    JoinAsTeacherPageComponent
+    JoinAsTeacherPageComponent,
+    CoursesListPageComponent,
+    CoursesCardsComponent
   ],
   imports: [
     BrowserModule,

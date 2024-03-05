@@ -9,6 +9,8 @@ import { LandingPageComponent } from './components/pages/landing-page/landing-pa
 import { AllMentorsPageComponent } from './components/pages/all-mentors-page/all-mentors-page.component';
 import { MentorsCardsComponent } from './components/utils/mentors-cards/mentors-cards.component';
 import { JoinAsTeacherPageComponent } from './components/pages/join-as-teacher-page/join-as-teacher-page.component';
+import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
+import { CoursesCardsComponent } from './components/utils/courses-cards/courses-cards.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,11 @@ const routes: Routes = [
           { path : '' , component: MentorsCardsComponent},
         ]},
       { path: 'join-as-teacher', component: JoinAsTeacherPageComponent },
+      { path: 'courses-list', 
+        component: CoursesListPageComponent,
+        children: [
+          {path : '' , component: CoursesCardsComponent}
+        ]},
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
     ],

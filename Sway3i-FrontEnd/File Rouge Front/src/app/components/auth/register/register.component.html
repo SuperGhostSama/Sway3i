@@ -1,50 +1,53 @@
-<div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" formControlName="name" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="familyName" class="form-label">Family Name</label>
-            <input type="text" class="form-control" id="familyName" formControlName="familyName" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="nationality" class="form-label">Nationality</label>
-            <input type="text" class="form-control" id="nationality" formControlName="nationality" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="identityDocumentType" class="form-label">Identity Document Type</label>
-            <select class="form-select" id="identityDocumentType" formControlName="identityDocumentType" required>
-              <option value="NATIONAL_IDENTITY_CARD">National Identity Card</option>
-              <option value="PASSPORT">Passport</option>
-              <option value="DRIVING_LICENSE">DRIVING_LICENSE</option>
-              <option value="OTHER">OTHER</option>
-            </select>
-          </div>
-  
-          <div class="mb-3">
-            <label for="identityNumber" class="form-label">Identity Number</label>
-            <input type="text" class="form-control" id="identityNumber" formControlName="identityNumber" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" formControlName="email" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" formControlName="password" required>
-          </div>
-  
-          <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+<section class="p-5 d-flex justify-content-center">
+  <div class="p-4 border border-2 rounded-4 d-flex justify-content-center align-items-center" 
+    style="width: 66rem; background-color: white;">
+
+    <!-- left side div -->
+    <div class="w-50 d-flex flex-column justify-content-center align-items-center border-end" style="background-color: white;">
+      <div class="ps-3 pe-3 bg-white">
+        <!-- Logo -->
+      </div>
+      <div class="p-3 bg-white">
+        <h3 class="fw-bold bg-white">Welcome to <br> Sway3i Online <br> Learning Platform</h3>
+      </div>
+
+      <div class="p-3 text-center bg-white">
+        <img src="https://media.discordapp.net/attachments/1205085195221475398/1214844492713299979/image.png?ex=65fa9719&is=65e82219&hm=268194c8b722bb9df9b4baec944e794970d19aaad16da81c83ed862b63393295&=&format=webp&quality=lossless" alt="student sitting" class="w-50 bg-white">
       </div>
     </div>
+
+    <!-- Register Form -->
+    <div class="w-50 ps-4 bg-white">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="pb-3" style="background-color: white;">
+          <label for="firstName" class="form-label" style="background-color: white;">First Name</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName" required>
+        </div>
+        <div class="pb-3" style="background-color: white;">
+          <label for="lastName" class="form-label" style="background-color: white;">Last Name</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName" required>
+        </div>
+        <div class="pb-3" style="background-color: white;">
+          <label for="email" class="form-label" style="background-color: white;">Email</label>
+          <input type="email" class="form-control" id="email" name="email" formControlName="email" required>
+        </div>
+        <div class="pb-3" style="background-color: white;">
+          <label for="password" class="form-label" style="background-color: white;">Password</label>
+          <input type="password" class="form-control" id="password" name="password" formControlName="password" required>
+        </div>
+        <div class="pb-3" style="background-color: white;">
+          <label for="city" class="form-label" style="background-color: white;">City</label>
+          <input type="text" class="form-control" id="city" name="city" formControlName="city" required>
+        </div>
+        <div class="pb-3" style="background-color: white;">
+          <button type="submit" class="" id="btn-purple">Register</button>
+        </div>
+      </form>
+    </div>
+
   </div>
-  
+</section>
+
+
+
+

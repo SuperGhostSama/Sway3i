@@ -19,13 +19,11 @@ export class RegisterComponent {
     private notificationService: NotificationService
   ) {
     this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      familyName: ['', [Validators.required]],
-      nationality: ['', [Validators.required]],
-      identityDocumentType: ['', [Validators.required]],
-      identityNumber: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      city: ['', [Validators.required]],
     });
   }
 

@@ -1,5 +1,7 @@
 package com.sway3i.service;
 
+import com.sway3i.dto.Course.Request.CourseRequestDTO;
+import com.sway3i.dto.Course.Response.CourseResponseDTO;
 import com.sway3i.entities.Course;
 
 import java.util.List;
@@ -7,13 +9,13 @@ import java.util.Optional;
 
 public interface CourseService {
 
-    List<Course> getAllCourses();
+    List<CourseResponseDTO> getAllCourses();
 
-    Optional<Course> getCourseById(Long id);
+    Optional<CourseResponseDTO> getCourseById(Long id);
 
-    Course createCourse(Course course);
+    CourseResponseDTO createCourse(CourseRequestDTO courseRequest);
 
-    Course updateCourse(Long id, Course course);
+    CourseResponseDTO updateCourse(Long id, CourseRequestDTO updatedCourseRequest);
 
     void deleteCourse(Long id);
 }

@@ -154,5 +154,41 @@
                                  constraintName="fk_rolaut_on_role" referencedColumnNames="id"
                                  referencedTableName="role"/>
     </changeSet>
+    <changeSet id="1710175444989-9" author="Youcode (generated)">
+        <addColumn tableName="teacher_demand">
+            <column name="is_accepted" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710175444989-1" author="Youcode (generated)">
+        <dropColumn columnName="education_level" tableName="course"/>
+
+        <dropColumn columnName="type" tableName="course"/>
+    </changeSet>
+    <changeSet id="1710175444989-2" author="Youcode (generated)">
+        <addColumn tableName="course">
+            <column name="education_level" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710175444989-3" author="Youcode (generated)">
+        <dropColumn columnName="education_level" tableName="teacher_demand"/>
+    </changeSet>
+    <changeSet id="1710175444989-4" author="Youcode (generated)">
+        <addColumn tableName="teacher_demand">
+            <column name="education_level" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710175444989-5" author="Youcode (generated)">
+        <dropColumn columnName="pricing_plan" tableName="students_in_course"/>
+    </changeSet>
+    <changeSet id="1710175444989-6" author="Youcode (generated)">
+        <addColumn tableName="students_in_course">
+            <column name="pricing_plan" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710175444989-8" author="Youcode (generated)">
+        <addColumn tableName="course">
+            <column name="type" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
 
 </databaseChangeLog>

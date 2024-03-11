@@ -1,6 +1,7 @@
 package com.sway3i.controllers;
 
-import com.sway3i.entities.TeacherDemand;
+import com.sway3i.dto.TeacherDemand.Request.TeacherDemandRequestDTO;
+import com.sway3i.dto.TeacherDemand.Response.TeacherDemandResponseDTO;
 import com.sway3i.service.TeacherDemandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/teacher-demands")
@@ -22,33 +22,42 @@ public class TeacherDemandController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TeacherDemand>> getAllTeacherDemands() {
-        List<TeacherDemand> teacherDemands = teacherDemandService.getAllTeacherDemands();
-        return new ResponseEntity<>(teacherDemands, HttpStatus.OK);
+    public ResponseEntity<List<TeacherDemandResponseDTO>> getAllTeacherDemands() {
+        List<TeacherDemandResponseDTO> teacherDemands = teacherDemandService.getAllTeacherDemands();
+        return ResponseEntity.ok(teacherDemands);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TeacherDemand> getTeacherDemandById(@PathVariable Long id) {
-        Optional<TeacherDemand> teacherDemand = teacherDemandService.getTeacherDemandById(id);
-        return teacherDemand.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<TeacherDemandResponseDTO> getTeacherDemandById(@PathVariable Long id) {
+        return teacherDemandService.getTeacherDemandById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<TeacherDemand> createTeacherDemand(@RequestBody TeacherDemand teacherDemand) {
-        TeacherDemand createdTeacherDemand = teacherDemandService.createTeacherDemand(teacherDemand);
+    public ResponseEntity<TeacherDemandResponseDTO> createTeacherDemand(@RequestBody TeacherDemandRequestDTO teacherDemandRequest) {
+        TeacherDemandResponseDTO createdTeacherDemand = teacherDemandService.createTeacherDemand(teacherDemandRequest);
         return new ResponseEntity<>(createdTeacherDemand, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TeacherDemand> updateTeacherDemand(@PathVariable Long id, @RequestBody TeacherDemand updatedTeacherDemand) {
-        TeacherDemand updatedTeacherDemandResponse = teacherDemandService.updateTeacherDemand(id, updatedTeacherDemand);
-        return new ResponseEntity<>(updatedTeacherDemandResponse, HttpStatus.OK);
+    public ResponseEntity<TeacherDemandResponseDTO> updateTeacherDemand(
+            @PathVariable Long id,
+            @RequestBody TeacherDemandRequestDTO updatedTeacherDemandRequest
+    ) {
+        TeacherDemandResponseDTO updatedTeacherDemand = teacherDemandService.updateTeacherDemand(id, updatedTeacherDemandRequest);
+        return ResponseEntity.ok(updatedTeacherDemand);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTeacherDemand(@PathVariable Long id) {
         teacherDemandService.deleteTeacherDemand(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/accept/{id}")
+    public ResponseEntity<Void> acceptTeacherDemand(@PathVariable Long id) {
+        teacherDemandService.acceptTeacherDemand(id);
+        return ResponseEntity.noContent().build();
     }
 }

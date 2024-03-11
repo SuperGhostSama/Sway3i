@@ -61,6 +61,18 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
         teacherDemandRepository.deleteById(id);
     }
 
+    @Override
+    public void acceptTeacherDemand(Long id) {
+        Optional<TeacherDemand> existingTeacherDemand = teacherDemandRepository.findById(id);
+        if (existingTeacherDemand.isPresent()) {
+            TeacherDemand teacherDemand = existingTeacherDemand.get();
+            teacherDemand.setIsAccepted(true);
+            teacherDemandRepository.save(teacherDemand);
+        } else {
+            throw new RuntimeException("TeacherDemand not found with id: " + id);
+        }
+    }
+
     private TeacherDemandResponseDTO convertToDTO(TeacherDemand teacherDemand) {
         return TeacherDemandResponseDTO.builder()
                 .id(teacherDemand.getId())

@@ -25,4 +25,6 @@ public class TeacherDemand {
     private EducationLevel educationLevel;
 
     private String description;
+
+    private Boolean isAccepted;
 }

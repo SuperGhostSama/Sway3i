@@ -4,6 +4,7 @@ import com.sway3i.dto.Course.Request.CourseRequestDTO;
 import com.sway3i.dto.Course.Response.CourseResponseDTO;
 import com.sway3i.entities.Course;
 import com.sway3i.entities.Program;
+import com.sway3i.entities.User;
 import com.sway3i.repository.CourseRepository;
 import com.sway3i.repository.UserRepository;
 import com.sway3i.service.CourseService;
@@ -41,6 +42,17 @@ public class CourseServiceImpl implements CourseService {
     public Optional<CourseResponseDTO> getCourseById(Long id) {
         return courseRepository.findById(id)
                 .map(this::convertToDTO);
+    }
+
+    @Override
+    public List<CourseResponseDTO> getAllCoursesByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+
+        List<Course> courses = courseRepository.findByCreatedBy(user);
+        return courses.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

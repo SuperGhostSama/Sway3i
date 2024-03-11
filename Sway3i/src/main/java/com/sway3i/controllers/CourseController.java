@@ -32,6 +32,12 @@ public class CourseController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/byEmail")
+    public ResponseEntity<List<CourseResponseDTO>> getAllCoursesByEmail(@RequestParam String email) {
+        List<CourseResponseDTO> courses = courseService.getAllCoursesByEmail(email);
+        return ResponseEntity.ok(courses);
+    }
+
     @PostMapping
     public ResponseEntity<CourseResponseDTO> createCourse(@RequestBody CourseRequestDTO courseRequest) {
         CourseResponseDTO createdCourse = courseService.createCourse(courseRequest);

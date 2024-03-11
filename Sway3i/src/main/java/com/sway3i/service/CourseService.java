@@ -18,4 +18,5 @@ public interface CourseService {
     CourseResponseDTO updateCourse(Long id, CourseRequestDTO updatedCourseRequest);
 
     void deleteCourse(Long id);
+    List<CourseResponseDTO> getAllCoursesByEmail(String email);
 }

@@ -15,6 +15,11 @@ public enum AuthorityEnum {
     VIEW_AUTHORITIES,
 
 
+    VIEW_COURSES,
+    VIEW_ONE_COURSE,
+    CREATE_COURSE,
+    UPDATE_COURSE,
+    DELETE_COURSE,
 
 
 }

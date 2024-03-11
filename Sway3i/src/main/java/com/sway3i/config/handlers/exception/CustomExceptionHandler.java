@@ -1,6 +1,6 @@
 package com.sway3i.config.handlers.exception;
 
-import com.example.aftas.config.handlers.response.ResponseMessage;
+import com.sway3i.config.handlers.response.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

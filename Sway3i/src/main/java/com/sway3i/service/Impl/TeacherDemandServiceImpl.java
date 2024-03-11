@@ -23,7 +23,6 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
     private final TeacherDemandRepository teacherDemandRepository;
     private final UserRepository userRepository;
 
-
     @Override
     public List<TeacherDemandResponseDTO> getAllTeacherDemands() {
         List<TeacherDemand> teacherDemands = teacherDemandRepository.findAll();
@@ -37,6 +36,14 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
         return teacherDemandRepository.findById(id)
                 .map(this::convertToDTO);
     }
+
+    public List<TeacherDemand> getTeacherDemandsByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+
+        return teacherDemandRepository.findByCreatedBy(user);
+    }
+
 
     @Override
     public TeacherDemandResponseDTO createTeacherDemand(TeacherDemandRequestDTO teacherDemandRequest) {

@@ -2,7 +2,11 @@ package com.sway3i.controllers;
 
 import com.sway3i.dto.TeacherDemand.Request.TeacherDemandRequestDTO;
 import com.sway3i.dto.TeacherDemand.Response.TeacherDemandResponseDTO;
+import com.sway3i.entities.TeacherDemand;
+import com.sway3i.entities.User;
+import com.sway3i.repository.UserRepository;
 import com.sway3i.service.TeacherDemandService;
+import com.sway3i.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +36,11 @@ public class TeacherDemandController {
         return teacherDemandService.getTeacherDemandById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/teacher-demands")
+    public List<TeacherDemand> getTeacherDemandsByEmail(@RequestParam String email) {
+        return teacherDemandService.getTeacherDemandsByEmail(email);
     }
 
     @PostMapping

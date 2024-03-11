@@ -1,5 +1,7 @@
 package com.sway3i.controller;
 
+import com.sway3i.dto.Program.Request.ProgramRequestDTO;
+import com.sway3i.dto.Program.Response.ProgramResponseDTO;
 import com.sway3i.entities.Program;
 import com.sway3i.service.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/program")
+@RequestMapping("/api/v1/programs")
 public class ProgramController {
 
     private final ProgramService programService;
@@ -22,28 +23,37 @@ public class ProgramController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Program>> getAllPrograms() {
-        List<Program> programs = programService.getAllPrograms();
+    public ResponseEntity<List<ProgramResponseDTO>> getAllPrograms() {
+        List<ProgramResponseDTO> programs = programService.getAllPrograms();
         return new ResponseEntity<>(programs, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Program> getProgramById(@PathVariable Long id) {
-        Optional<Program> program = programService.getProgramById(id);
-        return program.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+    public ResponseEntity<ProgramResponseDTO> getProgramById(@PathVariable Long id) {
+        return programService.getProgramById(id)
+                .map(program -> new ResponseEntity<>(program, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<Program> createProgram(@RequestBody Program program) {
-        Program createdProgram = programService.createProgram(program);
-        return new ResponseEntity<>(createdProgram, HttpStatus.CREATED);
+    public ResponseEntity<ProgramResponseDTO> createProgram(@RequestBody ProgramRequestDTO programRequest) {
+        try {
+            ProgramResponseDTO createdProgram = programService.createProgram(programRequest);
+            return new ResponseEntity<>(createdProgram, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Program> updateProgram(@PathVariable Long id, @RequestBody Program updatedProgram) {
-        Program updatedProgramResult = programService.updateProgram(id, updatedProgram);
-        return new ResponseEntity<>(updatedProgramResult, HttpStatus.OK);
+    public ResponseEntity<ProgramResponseDTO> updateProgram(@PathVariable Long id,
+                                                            @RequestBody ProgramRequestDTO updatedProgramRequest) {
+        try {
+            ProgramResponseDTO updatedProgram = programService.updateProgram(id, updatedProgramRequest);
+            return new ResponseEntity<>(updatedProgram, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/{id}")

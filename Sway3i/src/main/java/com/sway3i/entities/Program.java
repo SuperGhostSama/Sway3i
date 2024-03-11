@@ -1,9 +1,7 @@
 package com.sway3i.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.sway3i.entities.enums.Days;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,6 +18,7 @@ public class Program {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate day;
+    @Enumerated(EnumType.STRING)
+    private Days day;
     private LocalTime time;
 }

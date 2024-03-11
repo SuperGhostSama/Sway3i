@@ -44,7 +44,6 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
         return teacherDemandRepository.findByCreatedBy(user);
     }
 
-
     @Override
     public TeacherDemandResponseDTO createTeacherDemand(TeacherDemandRequestDTO teacherDemandRequest) {
         User createdBy = userRepository.findById(teacherDemandRequest.getCreatedById())

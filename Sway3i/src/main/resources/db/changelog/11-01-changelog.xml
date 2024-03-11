@@ -190,5 +190,51 @@
             <column name="type" type="VARCHAR(255)"/>
         </addColumn>
     </changeSet>
+    <changeSet id="1710181260857-1" author="Youcode (generated)">
+        <dropColumn columnName="day" tableName="program"/>
+    </changeSet>
+    <changeSet id="1710181260857-2" author="Youcode (generated)">
+        <addColumn tableName="program">
+            <column name="day" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710181260857-3" author="Youcode (generated)">
+        <dropColumn columnName="education_level" tableName="course"/>
+
+        <dropColumn columnName="type" tableName="course"/>
+    </changeSet>
+    <changeSet id="1710181260857-4" author="Youcode (generated)">
+        <addColumn tableName="course">
+            <column name="education_level" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710181260857-5" author="Youcode (generated)">
+        <dropColumn columnName="education_level" tableName="teacher_demand"/>
+
+        <dropColumn columnName="status" tableName="teacher_demand"/>
+    </changeSet>
+    <changeSet id="1710181260857-6" author="Youcode (generated)">
+        <addColumn tableName="teacher_demand">
+            <column name="education_level" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710181260857-7" author="Youcode (generated)">
+        <dropColumn columnName="pricing_plan" tableName="students_in_course"/>
+    </changeSet>
+    <changeSet id="1710181260857-8" author="Youcode (generated)">
+        <addColumn tableName="students_in_course">
+            <column name="pricing_plan" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710181260857-10" author="Youcode (generated)">
+        <addColumn tableName="teacher_demand">
+            <column name="status" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710181260857-12" author="Youcode (generated)">
+        <addColumn tableName="course">
+            <column name="type" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
 
 </databaseChangeLog>

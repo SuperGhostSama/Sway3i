@@ -6,6 +6,7 @@ import com.sway3i.entities.Course;
 import com.sway3i.entities.Program;
 import com.sway3i.entities.User;
 import com.sway3i.repository.CourseRepository;
+import com.sway3i.repository.ProgramRepository;
 import com.sway3i.repository.UserRepository;
 import com.sway3i.service.CourseService;
 import com.sway3i.service.UserService;
@@ -13,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,6 +26,7 @@ public class CourseServiceImpl implements CourseService {
     private final CourseRepository courseRepository;
     private final UserService userService;
     private final UserRepository userRepository;
+    private final ProgramRepository programRepository;
 
     @Override
     public List<CourseResponseDTO> getAllCourses() {
@@ -75,6 +78,34 @@ public class CourseServiceImpl implements CourseService {
         courseRepository.deleteById(id);
     }
 
+    private Course convertToEntity(CourseRequestDTO courseRequest) {
+        List<Long> programIds = courseRequest.getProgramIds();
+        List<Program> programs = new ArrayList<>();
+
+        if (programIds != null && !programIds.isEmpty()) {
+            for (Long programId : programIds) {
+                Program program = programRepository.findById(programId)
+                        .orElseThrow(() -> new RuntimeException("Program not found with id: " + programId));
+
+                programs.add(program);
+            }
+        }
+
+        return Course.builder()
+                .createdAt(LocalDate.now())  // You may want to set the creation date here
+                .createdBy(userRepository.getUserById(courseRequest.getCreatedByUserId()))
+                .subject(courseRequest.getSubject())
+                .courseDetails(courseRequest.getCourseDetails())
+                .courseIsFor(courseRequest.getCourseIsFor())
+                .price(courseRequest.getPrice())
+                .city(courseRequest.getCity())
+                .educationLevel(courseRequest.getEducationLevel())
+                .type(courseRequest.getType())
+                .studentsInPerson(courseRequest.getStudentsInPerson())
+                .programs(programs)
+                .build();
+    }
+
     private CourseResponseDTO convertToDTO(Course course) {
         return CourseResponseDTO.builder()
                 .id(course.getId())
@@ -90,24 +121,6 @@ public class CourseServiceImpl implements CourseService {
                 .studentsInPerson(course.getStudentsInPerson())
                 .programIds(course.getPrograms().stream()
                         .map(Program::getId)
-                        .collect(Collectors.toList()))
-                .build();
-    }
-
-    private Course convertToEntity(CourseRequestDTO courseRequest) {
-        return Course.builder()
-                .createdAt(LocalDate.now())  // You may want to set the creation date here
-                .createdBy(userRepository.getUserById(courseRequest.getCreatedByUserId()))
-                .subject(courseRequest.getSubject())
-                .courseDetails(courseRequest.getCourseDetails())
-                .courseIsFor(courseRequest.getCourseIsFor())
-                .price(courseRequest.getPrice())
-                .city(courseRequest.getCity())
-                .educationLevel(courseRequest.getEducationLevel())
-                .type(courseRequest.getType())
-                .studentsInPerson(courseRequest.getStudentsInPerson())
-                .programs(courseRequest.getProgramIds().stream()
-                        .map(programId -> Program.builder().id(programId).build())
                         .collect(Collectors.toList()))
                 .build();
     }

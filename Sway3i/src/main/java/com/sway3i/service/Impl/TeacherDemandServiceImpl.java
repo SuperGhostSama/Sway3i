@@ -1,5 +1,7 @@
 package com.sway3i.service.Impl;
 
+import com.sway3i.dto.TeacherDemand.Request.TeacherDemandRequestDTO;
+import com.sway3i.dto.TeacherDemand.Response.TeacherDemandResponseDTO;
 import com.sway3i.entities.TeacherDemand;
 import com.sway3i.repository.TeacherDemandRepository;
 import com.sway3i.service.TeacherDemandService;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TeacherDemandServiceImpl implements TeacherDemandService {
@@ -20,26 +23,34 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
     }
 
     @Override
-    public List<TeacherDemand> getAllTeacherDemands() {
-        return teacherDemandRepository.findAll();
+    public List<TeacherDemandResponseDTO> getAllTeacherDemands() {
+        List<TeacherDemand> teacherDemands = teacherDemandRepository.findAll();
+        return teacherDemands.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<TeacherDemand> getTeacherDemandById(Long id) {
-        return teacherDemandRepository.findById(id);
+    public Optional<TeacherDemandResponseDTO> getTeacherDemandById(Long id) {
+        return teacherDemandRepository.findById(id)
+                .map(this::convertToDTO);
     }
 
     @Override
-    public TeacherDemand createTeacherDemand(TeacherDemand teacherDemand) {
-        return teacherDemandRepository.save(teacherDemand);
+    public TeacherDemandResponseDTO createTeacherDemand(TeacherDemandRequestDTO teacherDemandRequest) {
+        TeacherDemand teacherDemand = convertToEntity(teacherDemandRequest);
+        TeacherDemand savedTeacherDemand = teacherDemandRepository.save(teacherDemand);
+        return convertToDTO(savedTeacherDemand);
     }
 
     @Override
-    public TeacherDemand updateTeacherDemand(Long id, TeacherDemand updatedTeacherDemand) {
+    public TeacherDemandResponseDTO updateTeacherDemand(Long id, TeacherDemandRequestDTO updatedTeacherDemandRequest) {
         Optional<TeacherDemand> existingTeacherDemand = teacherDemandRepository.findById(id);
         if (existingTeacherDemand.isPresent()) {
+            TeacherDemand updatedTeacherDemand = convertToEntity(updatedTeacherDemandRequest);
             updatedTeacherDemand.setId(id);
-            return teacherDemandRepository.save(updatedTeacherDemand);
+            TeacherDemand savedTeacherDemand = teacherDemandRepository.save(updatedTeacherDemand);
+            return convertToDTO(savedTeacherDemand);
         } else {
             throw new RuntimeException("TeacherDemand not found with id: " + id);
         }
@@ -48,5 +59,24 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
     @Override
     public void deleteTeacherDemand(Long id) {
         teacherDemandRepository.deleteById(id);
+    }
+
+    private TeacherDemandResponseDTO convertToDTO(TeacherDemand teacherDemand) {
+        return TeacherDemandResponseDTO.builder()
+                .id(teacherDemand.getId())
+                .createdBy(teacherDemand.getCreatedBy())
+                .subject(teacherDemand.getSubject())
+                .educationLevel(teacherDemand.getEducationLevel())
+                .description(teacherDemand.getDescription())
+                .build();
+    }
+
+    private TeacherDemand convertToEntity(TeacherDemandRequestDTO teacherDemandRequest) {
+        return TeacherDemand.builder()
+                .createdBy(teacherDemandRequest.getCreatedBy())
+                .subject(teacherDemandRequest.getSubject())
+                .educationLevel(teacherDemandRequest.getEducationLevel())
+                .description(teacherDemandRequest.getDescription())
+                .build();
     }
 }

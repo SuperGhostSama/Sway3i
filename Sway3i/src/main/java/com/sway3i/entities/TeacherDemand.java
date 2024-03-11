@@ -1,5 +1,6 @@
 package com.sway3i.entities;
 
+import com.sway3i.entities.enums.DemandStatus;
 import com.sway3i.entities.enums.EducationLevel;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,5 +27,6 @@ public class TeacherDemand {
 
     private String description;
 
-    private Boolean isAccepted;
+    @Enumerated(EnumType.STRING)
+    private DemandStatus status;
 }

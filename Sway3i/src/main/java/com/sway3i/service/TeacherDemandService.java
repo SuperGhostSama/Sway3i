@@ -19,4 +19,6 @@ public interface TeacherDemandService {
 
     void acceptTeacherDemand(Long id);
 
+    void rejectTeacherDemand(Long id);
+
 }

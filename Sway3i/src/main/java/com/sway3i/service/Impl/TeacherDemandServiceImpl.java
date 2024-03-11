@@ -3,6 +3,7 @@ package com.sway3i.service.Impl;
 import com.sway3i.dto.TeacherDemand.Request.TeacherDemandRequestDTO;
 import com.sway3i.dto.TeacherDemand.Response.TeacherDemandResponseDTO;
 import com.sway3i.entities.TeacherDemand;
+import com.sway3i.entities.enums.DemandStatus;
 import com.sway3i.repository.TeacherDemandRepository;
 import com.sway3i.service.TeacherDemandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +64,19 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
 
     @Override
     public void acceptTeacherDemand(Long id) {
+        updateDemandStatus(id, DemandStatus.ACCEPTED);
+    }
+
+    @Override
+    public void rejectTeacherDemand(Long id) {
+        updateDemandStatus(id, DemandStatus.REJECTED);
+    }
+
+    private void updateDemandStatus(Long id, DemandStatus status) {
         Optional<TeacherDemand> existingTeacherDemand = teacherDemandRepository.findById(id);
         if (existingTeacherDemand.isPresent()) {
             TeacherDemand teacherDemand = existingTeacherDemand.get();
-            teacherDemand.setIsAccepted(true);
+            teacherDemand.setStatus(status);
             teacherDemandRepository.save(teacherDemand);
         } else {
             throw new RuntimeException("TeacherDemand not found with id: " + id);

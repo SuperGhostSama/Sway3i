@@ -55,9 +55,15 @@ public class TeacherDemandController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/accept/{id}")
+    @PostMapping("/{id}/accept")
     public ResponseEntity<Void> acceptTeacherDemand(@PathVariable Long id) {
         teacherDemandService.acceptTeacherDemand(id);
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}/reject")
+    public ResponseEntity<Void> rejectTeacherDemand(@PathVariable Long id) {
+        teacherDemandService.rejectTeacherDemand(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

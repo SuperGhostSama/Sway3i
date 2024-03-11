@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Builder
@@ -19,11 +20,13 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
     private LocalDate createdAt;
 
     @ManyToOne
     @JoinColumn(name = "created_by_id", nullable = false)
     private User createdBy;
+
     private String subject;
     private String courseDetails;
     private String courseIsFor;
@@ -38,7 +41,10 @@ public class Course {
 
     private int studentsInPerson;
 
-    @ManyToOne
-    @JoinColumn(name = "program_id")
-    private Program program;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "course_program",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "program_id"))
+    private List<Program> programs;
 }

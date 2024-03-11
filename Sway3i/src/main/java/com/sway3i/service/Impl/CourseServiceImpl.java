@@ -9,26 +9,21 @@ import com.sway3i.repository.CourseRepository;
 import com.sway3i.repository.UserRepository;
 import com.sway3i.service.CourseService;
 import com.sway3i.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
     private final UserService userService;
     private final UserRepository userRepository;
-
-
-    public CourseServiceImpl(CourseRepository courseRepository, UserService userService, UserRepository userRepository) {
-        this.courseRepository = courseRepository;
-        this.userService = userService;
-        this.userRepository = userRepository;
-    }
 
     @Override
     public List<CourseResponseDTO> getAllCourses() {
@@ -93,13 +88,15 @@ public class CourseServiceImpl implements CourseService {
                 .educationLevel(course.getEducationLevel().name())
                 .type(course.getType().name())
                 .studentsInPerson(course.getStudentsInPerson())
-                .programId(course.getProgram() != null ? course.getProgram().getId() : null)
+                .programIds(course.getPrograms().stream()
+                        .map(Program::getId)
+                        .collect(Collectors.toList()))
                 .build();
     }
 
     private Course convertToEntity(CourseRequestDTO courseRequest) {
         return Course.builder()
-                .createdAt(courseRequest.getCreatedAt())
+                .createdAt(LocalDate.now())  // You may want to set the creation date here
                 .createdBy(userRepository.getUserById(courseRequest.getCreatedByUserId()))
                 .subject(courseRequest.getSubject())
                 .courseDetails(courseRequest.getCourseDetails())
@@ -109,7 +106,9 @@ public class CourseServiceImpl implements CourseService {
                 .educationLevel(courseRequest.getEducationLevel())
                 .type(courseRequest.getType())
                 .studentsInPerson(courseRequest.getStudentsInPerson())
-                .program(courseRequest.getProgramId() != null ? Program.builder().id(courseRequest.getProgramId()).build() : null)
+                .programs(courseRequest.getProgramIds().stream()
+                        .map(programId -> Program.builder().id(programId).build())
+                        .collect(Collectors.toList()))
                 .build();
     }
 }

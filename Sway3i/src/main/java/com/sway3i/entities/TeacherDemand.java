@@ -16,7 +16,7 @@ public class TeacherDemand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "created_by_id", nullable = false)
     private User createdBy;
 

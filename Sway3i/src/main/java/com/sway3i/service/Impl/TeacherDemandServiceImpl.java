@@ -3,9 +3,12 @@ package com.sway3i.service.Impl;
 import com.sway3i.dto.TeacherDemand.Request.TeacherDemandRequestDTO;
 import com.sway3i.dto.TeacherDemand.Response.TeacherDemandResponseDTO;
 import com.sway3i.entities.TeacherDemand;
+import com.sway3i.entities.User;
 import com.sway3i.entities.enums.DemandStatus;
 import com.sway3i.repository.TeacherDemandRepository;
+import com.sway3i.repository.UserRepository;
 import com.sway3i.service.TeacherDemandService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +17,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class TeacherDemandServiceImpl implements TeacherDemandService {
 
     private final TeacherDemandRepository teacherDemandRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    public TeacherDemandServiceImpl(TeacherDemandRepository teacherDemandRepository) {
-        this.teacherDemandRepository = teacherDemandRepository;
-    }
 
     @Override
     public List<TeacherDemandResponseDTO> getAllTeacherDemands() {
@@ -39,10 +40,22 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
 
     @Override
     public TeacherDemandResponseDTO createTeacherDemand(TeacherDemandRequestDTO teacherDemandRequest) {
-        TeacherDemand teacherDemand = convertToEntity(teacherDemandRequest);
+        User createdBy = userRepository.findById(teacherDemandRequest.getCreatedById())
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + teacherDemandRequest.getCreatedById()));
+
+        TeacherDemand teacherDemand = TeacherDemand.builder()
+                .createdBy(createdBy)
+                .subject(teacherDemandRequest.getSubject())
+                .educationLevel(teacherDemandRequest.getEducationLevel())
+                .description(teacherDemandRequest.getDescription())
+                .status(DemandStatus.IN_PROGRESS)
+                .build();
+
         TeacherDemand savedTeacherDemand = teacherDemandRepository.save(teacherDemand);
         return convertToDTO(savedTeacherDemand);
     }
+
+
 
     @Override
     public TeacherDemandResponseDTO updateTeacherDemand(Long id, TeacherDemandRequestDTO updatedTeacherDemandRequest) {
@@ -72,6 +85,7 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
         updateDemandStatus(id, DemandStatus.REJECTED);
     }
 
+    //Helper methods
     private void updateDemandStatus(Long id, DemandStatus status) {
         Optional<TeacherDemand> existingTeacherDemand = teacherDemandRepository.findById(id);
         if (existingTeacherDemand.isPresent()) {
@@ -90,12 +104,12 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
                 .subject(teacherDemand.getSubject())
                 .educationLevel(teacherDemand.getEducationLevel())
                 .description(teacherDemand.getDescription())
+                .status(teacherDemand.getStatus())
                 .build();
     }
 
     private TeacherDemand convertToEntity(TeacherDemandRequestDTO teacherDemandRequest) {
         return TeacherDemand.builder()
-                .createdBy(teacherDemandRequest.getCreatedBy())
                 .subject(teacherDemandRequest.getSubject())
                 .educationLevel(teacherDemandRequest.getEducationLevel())
                 .description(teacherDemandRequest.getDescription())

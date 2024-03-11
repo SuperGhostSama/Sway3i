@@ -55,21 +55,6 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
         return convertToDTO(savedTeacherDemand);
     }
 
-
-
-    @Override
-    public TeacherDemandResponseDTO updateTeacherDemand(Long id, TeacherDemandRequestDTO updatedTeacherDemandRequest) {
-        Optional<TeacherDemand> existingTeacherDemand = teacherDemandRepository.findById(id);
-        if (existingTeacherDemand.isPresent()) {
-            TeacherDemand updatedTeacherDemand = convertToEntity(updatedTeacherDemandRequest);
-            updatedTeacherDemand.setId(id);
-            TeacherDemand savedTeacherDemand = teacherDemandRepository.save(updatedTeacherDemand);
-            return convertToDTO(savedTeacherDemand);
-        } else {
-            throw new RuntimeException("TeacherDemand not found with id: " + id);
-        }
-    }
-
     @Override
     public void deleteTeacherDemand(Long id) {
         teacherDemandRepository.deleteById(id);
@@ -108,11 +93,4 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
                 .build();
     }
 
-    private TeacherDemand convertToEntity(TeacherDemandRequestDTO teacherDemandRequest) {
-        return TeacherDemand.builder()
-                .subject(teacherDemandRequest.getSubject())
-                .educationLevel(teacherDemandRequest.getEducationLevel())
-                .description(teacherDemandRequest.getDescription())
-                .build();
-    }
 }

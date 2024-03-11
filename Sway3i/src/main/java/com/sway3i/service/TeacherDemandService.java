@@ -13,8 +13,6 @@ public interface TeacherDemandService {
 
     TeacherDemandResponseDTO createTeacherDemand(TeacherDemandRequestDTO teacherDemandRequest);
 
-    TeacherDemandResponseDTO updateTeacherDemand(Long id, TeacherDemandRequestDTO updatedTeacherDemandRequest);
-
     void deleteTeacherDemand(Long id);
 
     void acceptTeacherDemand(Long id);

@@ -40,15 +40,6 @@ public class TeacherDemandController {
         return new ResponseEntity<>(createdTeacherDemand, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<TeacherDemandResponseDTO> updateTeacherDemand(
-            @PathVariable Long id,
-            @RequestBody TeacherDemandRequestDTO updatedTeacherDemandRequest
-    ) {
-        TeacherDemandResponseDTO updatedTeacherDemand = teacherDemandService.updateTeacherDemand(id, updatedTeacherDemandRequest);
-        return ResponseEntity.ok(updatedTeacherDemand);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTeacherDemand(@PathVariable Long id) {
         teacherDemandService.deleteTeacherDemand(id);

@@ -5,7 +5,9 @@ import com.sway3i.dto.Authentication.Request.RefreshTokenRequestDTO;
 import com.sway3i.dto.Authentication.Request.RegisterRequest;
 import com.sway3i.dto.Authentication.Response.AuthenticationResponse;
 import com.sway3i.dto.Authentication.Response.RefreshTokenResponseDTO;
+import com.sway3i.entities.Role;
 import com.sway3i.entities.User;
+import com.sway3i.repository.RoleRepository;
 import com.sway3i.repository.UserRepository;
 import com.sway3i.security.JwtService;
 import com.sway3i.service.AuthenticationService;
@@ -23,6 +25,7 @@ import java.util.Objects;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -35,13 +38,28 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new IllegalArgumentException("Email is already taken");
         }
 
+        // Determine the role based on the request
+        Role defaultRole = roleService.findDefaultRole().orElse(null);
+
+        String requestedRole = request.getRole().toUpperCase(); // Convert to uppercase for case-insensitive comparison
+
+        Role userRole;
+        if ("TEACHER".equals(requestedRole)) {
+            userRole = roleRepository.findByName("ROLE_TEACHER").orElse(defaultRole);
+        } else if ("STUDENT".equals(requestedRole)) {
+            userRole = roleRepository.findByName("ROLE_STUDENT").orElse(defaultRole);
+        } else {
+            throw new IllegalArgumentException("Invalid role specified");
+        }
+
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .city(request.getCity())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(roleService.findDefaultRole().orElse(null))
+                .role(userRole)
+                .isValid("STUDENT".equals(requestedRole)) // Set isValid based on role
                 .build();
 
         userRepository.save(user);

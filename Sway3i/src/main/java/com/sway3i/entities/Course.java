@@ -47,4 +47,9 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "program_id"))
     private List<Program> programs;
+
+
+    @OneToMany
+    private List<Fees> fees;
+
 }

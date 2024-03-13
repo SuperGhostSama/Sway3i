@@ -3,9 +3,11 @@ package com.sway3i.service.Impl;
 import com.sway3i.dto.Course.Request.CourseRequestDTO;
 import com.sway3i.dto.Course.Response.CourseResponseDTO;
 import com.sway3i.entities.Course;
+import com.sway3i.entities.Fees;
 import com.sway3i.entities.Program;
 import com.sway3i.entities.User;
 import com.sway3i.repository.CourseRepository;
+import com.sway3i.repository.FeesRepository;
 import com.sway3i.repository.ProgramRepository;
 import com.sway3i.repository.UserRepository;
 import com.sway3i.service.CourseService;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,6 +30,7 @@ public class CourseServiceImpl implements CourseService {
     private final UserService userService;
     private final UserRepository userRepository;
     private final ProgramRepository programRepository;
+    private final FeesRepository feesRepository;
 
     @Override
     public List<CourseResponseDTO> getAllCourses() {
@@ -90,9 +94,19 @@ public class CourseServiceImpl implements CourseService {
                 programs.add(program);
             }
         }
+        //These are the fixed fees
+        List<Long> hardcodedFeeIds = Arrays.asList(1L, 2L, 3L, 4L, 5L);
+        List<Fees> fees = new ArrayList<>();
+
+        for (Long feeId : hardcodedFeeIds) {
+            Fees fee = feesRepository.findById(feeId)
+                    .orElseThrow(() -> new RuntimeException("Fee not found with id: " + feeId));
+
+            fees.add(fee);
+        }
 
         return Course.builder()
-                .createdAt(LocalDate.now())  // You may want to set the creation date here
+                .createdAt(LocalDate.now())
                 .createdBy(userRepository.getUserById(courseRequest.getCreatedByUserId()))
                 .subject(courseRequest.getSubject())
                 .courseDetails(courseRequest.getCourseDetails())
@@ -103,6 +117,7 @@ public class CourseServiceImpl implements CourseService {
                 .type(courseRequest.getType())
                 .studentsInPerson(courseRequest.getStudentsInPerson())
                 .programs(programs)
+                .fees(fees)
                 .build();
     }
 

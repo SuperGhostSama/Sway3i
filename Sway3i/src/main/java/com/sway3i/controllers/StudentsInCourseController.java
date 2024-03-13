@@ -1,6 +1,7 @@
 package com.sway3i.controllers;
 
-import com.sway3i.entities.StudentsInCourse;
+import com.sway3i.dto.StudentsInCourse.Request.StudentsInCourseRequestDTO;
+import com.sway3i.dto.StudentsInCourse.Response.StudentsInCourseResponseDTO;
 import com.sway3i.service.StudentsInCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,27 +23,27 @@ public class StudentsInCourseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<StudentsInCourse>> getAllStudentsInCourses() {
-        List<StudentsInCourse> studentsInCourses = studentsInCourseService.getAllStudentsInCourses();
+    public ResponseEntity<List<StudentsInCourseResponseDTO>> getAllStudentsInCourses() {
+        List<StudentsInCourseResponseDTO> studentsInCourses = studentsInCourseService.getAllStudentsInCourses();
         return new ResponseEntity<>(studentsInCourses, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentsInCourse> getStudentsInCourseById(@PathVariable Long id) {
-        Optional<StudentsInCourse> studentsInCourse = studentsInCourseService.getStudentsInCourseById(id);
+    public ResponseEntity<StudentsInCourseResponseDTO> getStudentsInCourseById(@PathVariable Long id) {
+        Optional<StudentsInCourseResponseDTO> studentsInCourse = studentsInCourseService.getStudentsInCourseById(id);
         return studentsInCourse.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<StudentsInCourse> createStudentsInCourse(@RequestBody StudentsInCourse studentsInCourse) {
-        StudentsInCourse createdStudentsInCourse = studentsInCourseService.createStudentsInCourse(studentsInCourse);
+    public ResponseEntity<StudentsInCourseResponseDTO> createStudentsInCourse(@RequestBody StudentsInCourseRequestDTO studentsInCourseRequest) {
+        StudentsInCourseResponseDTO createdStudentsInCourse = studentsInCourseService.createStudentsInCourse(studentsInCourseRequest);
         return new ResponseEntity<>(createdStudentsInCourse, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentsInCourse> updateStudentsInCourse(@PathVariable Long id, @RequestBody StudentsInCourse updatedStudentsInCourse) {
-        StudentsInCourse updatedStudentsInCourseResponse = studentsInCourseService.updateStudentsInCourse(id, updatedStudentsInCourse);
+    public ResponseEntity<StudentsInCourseResponseDTO> updateStudentsInCourse(@PathVariable Long id, @RequestBody StudentsInCourseRequestDTO updatedStudentsInCourseRequest) {
+        StudentsInCourseResponseDTO updatedStudentsInCourseResponse = studentsInCourseService.updateStudentsInCourse(id, updatedStudentsInCourseRequest);
         return new ResponseEntity<>(updatedStudentsInCourseResponse, HttpStatus.OK);
     }
 

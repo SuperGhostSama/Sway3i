@@ -1,6 +1,7 @@
 package com.sway3i.service;
 
 import com.sway3i.dto.Course.Request.CourseRequestDTO;
+import com.sway3i.dto.Course.Response.CourseDetailsResponseDTO;
 import com.sway3i.dto.Course.Response.CourseResponseDTO;
 import com.sway3i.entities.Course;
 
@@ -19,4 +20,7 @@ public interface CourseService {
 
     void deleteCourse(Long id);
     List<CourseResponseDTO> getAllCoursesByEmail(String email);
+
+    CourseDetailsResponseDTO getCourseDetails(Long courseId);
+
 }

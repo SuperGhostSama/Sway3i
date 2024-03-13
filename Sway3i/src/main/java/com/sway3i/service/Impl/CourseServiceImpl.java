@@ -1,6 +1,7 @@
 package com.sway3i.service.Impl;
 
 import com.sway3i.dto.Course.Request.CourseRequestDTO;
+import com.sway3i.dto.Course.Response.CourseDetailsResponseDTO;
 import com.sway3i.dto.Course.Response.CourseResponseDTO;
 import com.sway3i.entities.Course;
 import com.sway3i.entities.Fees;
@@ -56,6 +57,22 @@ public class CourseServiceImpl implements CourseService {
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public CourseDetailsResponseDTO getCourseDetails(Long courseId) {
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found with id: " + courseId));
+
+        List<Long> feeIds = course.getFees().stream()
+                .map(Fees::getId)
+                .collect(Collectors.toList());
+
+        return CourseDetailsResponseDTO.builder()
+                .price(course.getPrice())
+                .feeIds(feeIds)
+                .build();
+    }
+
 
     @Override
     public CourseResponseDTO createCourse(CourseRequestDTO courseRequest) {

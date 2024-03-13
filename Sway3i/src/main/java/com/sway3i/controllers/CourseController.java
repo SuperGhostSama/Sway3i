@@ -1,6 +1,7 @@
 package com.sway3i.controllers;
 
 import com.sway3i.dto.Course.Request.CourseRequestDTO;
+import com.sway3i.dto.Course.Response.CourseDetailsResponseDTO;
 import com.sway3i.dto.Course.Response.CourseResponseDTO;
 import com.sway3i.service.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,12 @@ public class CourseController {
     public ResponseEntity<List<CourseResponseDTO>> getAllCoursesByEmail(@RequestParam String email) {
         List<CourseResponseDTO> courses = courseService.getAllCoursesByEmail(email);
         return ResponseEntity.ok(courses);
+    }
+
+    @GetMapping("/{courseId}/details")
+    public ResponseEntity<CourseDetailsResponseDTOg(@PathVariable Long courseId) {
+        CourseDetailsResponseDTO courseDetails = courseService.getCourseDetails(courseId);
+        return ResponseEntity.ok(courseDetails);
     }
 
     @PostMapping

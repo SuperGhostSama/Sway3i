@@ -52,4 +52,7 @@ public class Course {
     @OneToMany
     private List<Fees> fees;
 
+    private String link;
+
+    private String address;
 }

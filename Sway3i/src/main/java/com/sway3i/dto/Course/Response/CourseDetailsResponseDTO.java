@@ -1,5 +1,6 @@
 package com.sway3i.dto.Course.Response;
 
+import com.sway3i.entities.Fees;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,5 +10,6 @@ import java.util.List;
 public class CourseDetailsResponseDTO {
 
     private long price;
-    private List<Long> feeIds;
+    private List<Fees> fees;
+
 }

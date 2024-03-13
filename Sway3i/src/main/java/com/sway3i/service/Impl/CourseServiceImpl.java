@@ -63,13 +63,9 @@ public class CourseServiceImpl implements CourseService {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new RuntimeException("Course not found with id: " + courseId));
 
-        List<Long> feeIds = course.getFees().stream()
-                .map(Fees::getId)
-                .collect(Collectors.toList());
-
         return CourseDetailsResponseDTO.builder()
                 .price(course.getPrice())
-                .feeIds(feeIds)
+                .fees(course.getFees())
                 .build();
     }
 

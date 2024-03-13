@@ -2,7 +2,9 @@ package com.sway3i.service.Impl;
 
 import com.sway3i.dto.StudentsInCourse.Request.StudentsInCourseRequestDTO;
 import com.sway3i.dto.StudentsInCourse.Response.StudentsInCourseResponseDTO;
+import com.sway3i.entities.Course;
 import com.sway3i.entities.StudentsInCourse;
+import com.sway3i.entities.User;
 import com.sway3i.repository.CourseRepository;
 import com.sway3i.repository.StudentsInCourseRepository;
 import com.sway3i.repository.UserRepository;
@@ -74,14 +76,31 @@ public class StudentsInCourseServiceImpl implements StudentsInCourseService {
     }
 
     private StudentsInCourse convertToEntity(StudentsInCourseRequestDTO studentsInCourseRequest) {
+        User user = userRepository.getUserById(studentsInCourseRequest.getStudentId());
+
+        if (user == null) {
+            throw new RuntimeException("User not found with id: " + studentsInCourseRequest.getStudentId());
+        }
+
+        Course course = courseRepository.findById(studentsInCourseRequest.getCourseId())
+                .orElseThrow(() -> new RuntimeException("Course not found with id: " + studentsInCourseRequest.getCourseId()));
+
+        // Check if there is already a StudentsInCourse for the same user and course
+        boolean isExistingCourseForUser = studentsInCourseRepository.existsByStudentAndCourse(user, course);
+        if (isExistingCourseForUser) {
+            throw new RuntimeException("Student already payed for this course");
+        }
+
         return StudentsInCourse.builder()
                 .createdAt(LocalDate.now())
-                .isExpired(studentsInCourseRequest.isExpired())
-                .student(userRepository.getUserById(studentsInCourseRequest.getStudentId()))
-                .course(courseRepository.findById(studentsInCourseRequest.getCourseId())
-                        .orElseThrow(() -> new RuntimeException("Course not found with id: " + studentsInCourseRequest.getCourseId())))
+                .isExpired(false)
+                .student(user)
+                .course(course)
                 .pricingPlan(studentsInCourseRequest.getPricingPlan())
                 .build();
     }
+
+
+
 
 }

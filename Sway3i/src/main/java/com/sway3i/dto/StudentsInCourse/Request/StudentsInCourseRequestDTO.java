@@ -10,8 +10,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentsInCourseRequestDTO {
-    private LocalDate createdAt;
-    private boolean isExpired;
     private Long studentId;
     private Long courseId;
     private PricingPlan pricingPlan;

@@ -1,6 +1,7 @@
 package com.sway3i.service.Impl;
 
 import com.sway3i.dto.StudentsInCourse.Request.StudentsInCourseRequestDTO;
+import com.sway3i.dto.StudentsInCourse.Response.EnrolledCourseResponseDTO;
 import com.sway3i.dto.StudentsInCourse.Response.StudentsInCourseResponseDTO;
 import com.sway3i.entities.Course;
 import com.sway3i.entities.StudentsInCourse;
@@ -63,6 +64,28 @@ public class StudentsInCourseServiceImpl implements StudentsInCourseService {
     public void deleteStudentsInCourse(Long id) {
         studentsInCourseRepository.deleteById(id);
     }
+
+    @Override
+    public List<EnrolledCourseResponseDTO> getEnrolledCoursesByStudentId(Long studentId) {
+        List<StudentsInCourse> studentsInCourses = studentsInCourseRepository.findByStudentId(studentId);
+        return studentsInCourses.stream()
+                .map(studentsInCourse -> EnrolledCourseResponseDTO.builder()
+                        .id(studentsInCourse.getId())
+                        .createdAt(studentsInCourse.getCreatedAt())
+                        .isExpired(studentsInCourse.isExpired())
+                        .studentId(studentsInCourse.getStudent().getId())
+                        .courseId(studentsInCourse.getCourse().getId())
+                        .courseDetails(studentsInCourse.getCourse().getCourseDetails())
+                        .courseSubject(studentsInCourse.getCourse().getSubject())
+                        .createdByFirstName(studentsInCourse.getCourse().getCreatedBy().getFirstName())
+                        .createdByLastName(studentsInCourse.getCourse().getCreatedBy().getLastName())
+                        .createdByCity(studentsInCourse.getCourse().getCreatedBy().getCity())
+                        .pricingPlan(studentsInCourse.getPricingPlan())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
+
 
     private StudentsInCourseResponseDTO convertToDTO(StudentsInCourse studentsInCourse) {
         return StudentsInCourseResponseDTO.builder()

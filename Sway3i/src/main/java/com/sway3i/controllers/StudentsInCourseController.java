@@ -1,6 +1,7 @@
 package com.sway3i.controllers;
 
 import com.sway3i.dto.StudentsInCourse.Request.StudentsInCourseRequestDTO;
+import com.sway3i.dto.StudentsInCourse.Response.EnrolledCourseResponseDTO;
 import com.sway3i.dto.StudentsInCourse.Response.StudentsInCourseResponseDTO;
 import com.sway3i.service.StudentsInCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,11 @@ public class StudentsInCourseController {
     public ResponseEntity<Void> deleteStudentsInCourse(@PathVariable Long id) {
         studentsInCourseService.deleteStudentsInCourse(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/enrolled-courses/{studentId}")
+    public ResponseEntity<List<EnrolledCourseResponseDTO>> getEnrolledCoursesByStudentId(@PathVariable Long studentId) {
+        List<EnrolledCourseResponseDTO> enrolledCourses = studentsInCourseService.getEnrolledCoursesByStudentId(studentId);
+        return new ResponseEntity<>(enrolledCourses, HttpStatus.OK);
     }
 }

@@ -1,6 +1,7 @@
 package com.sway3i.service;
 
 import com.sway3i.dto.StudentsInCourse.Request.StudentsInCourseRequestDTO;
+import com.sway3i.dto.StudentsInCourse.Response.EnrolledCourseResponseDTO;
 import com.sway3i.dto.StudentsInCourse.Response.StudentsInCourseResponseDTO;
 import com.sway3i.entities.StudentsInCourse;
 
@@ -18,4 +19,7 @@ public interface StudentsInCourseService {
     StudentsInCourseResponseDTO updateStudentsInCourse(Long id, StudentsInCourseRequestDTO updatedStudentsInCourseRequest);
 
     void deleteStudentsInCourse(Long id);
+
+    List<EnrolledCourseResponseDTO> getEnrolledCoursesByStudentId(Long studentId);
+
 }

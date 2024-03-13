@@ -40,7 +40,7 @@ public class CourseController {
     }
 
     @GetMapping("/{courseId}/details")
-    public ResponseEntity<CourseDetailsResponseDTOg(@PathVariable Long courseId) {
+    public ResponseEntity<CourseDetailsResponseDTO> getCourseDetails(@PathVariable Long courseId) {
         CourseDetailsResponseDTO courseDetails = courseService.getCourseDetails(courseId);
         return ResponseEntity.ok(courseDetails);
     }

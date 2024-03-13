@@ -1,9 +1,9 @@
 package com.sway3i.service;
 
-import com.sway3i.entities.enums.CourseType;
-import com.sway3i.entities.enums.PricingPlan;
+import com.sway3i.dto.CoursePricing.Request.CalculateDiscountedPriceRequestDTO;
+import com.sway3i.dto.CoursePricing.Response.CalculateDiscountedPriceResponseDTO;
 
 public interface CoursePricingService {
-    long calculateDiscountedPrice(CourseType courseType, PricingPlan pricingPlan);
+    CalculateDiscountedPriceResponseDTO calculateDiscountedPrices(CalculateDiscountedPriceRequestDTO request) ;
 
 }

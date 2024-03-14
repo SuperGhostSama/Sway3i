@@ -28,7 +28,6 @@ import java.util.stream.Collectors;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
-    private final UserService userService;
     private final UserRepository userRepository;
     private final ProgramRepository programRepository;
     private final FeesRepository feesRepository;
@@ -128,7 +127,7 @@ public class CourseServiceImpl implements CourseService {
                 .city(courseRequest.getCity())
                 .educationLevel(courseRequest.getEducationLevel())
                 .type(courseRequest.getType())
-                .studentsInPerson(courseRequest.getStudentsInPerson())
+                .maxStudents(courseRequest.getMaxStudents())
                 .programs(programs)
                 .fees(fees)
                 .build();
@@ -146,7 +145,7 @@ public class CourseServiceImpl implements CourseService {
                 .city(course.getCity())
                 .educationLevel(course.getEducationLevel().name())
                 .type(course.getType().name())
-                .studentsInPerson(course.getStudentsInPerson())
+                .maxStudents(course.getMaxStudents())
                 .programIds(course.getPrograms().stream()
                         .map(Program::getId)
                         .collect(Collectors.toList()))

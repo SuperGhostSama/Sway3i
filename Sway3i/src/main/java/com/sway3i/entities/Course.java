@@ -39,7 +39,7 @@ public class Course {
     @Enumerated(EnumType.STRING)
     private CourseType type;
 
-    private int studentsInPerson;
+    private int maxStudents;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(

@@ -26,7 +26,7 @@ public class CourseRequestDTO {
     private String city;
     private EducationLevel educationLevel;
     private CourseType type;
-    private int studentsInPerson;
+    private int maxStudents;
     private List<Long> programIds;
 
 }

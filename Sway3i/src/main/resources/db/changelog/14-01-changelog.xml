@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1710424163986-13" author="Youcode (generated)">
+        <createTable tableName="course_fees">
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fees_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1710424163986-14" author="Youcode (generated)">
+        <createTable tableName="course_program">
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="program_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1710424163986-15" author="Youcode (generated)">
+        <createTable tableName="fees">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_fees"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="percentage" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1710424163986-16" author="Youcode (generated)">
+        <addColumn tableName="course">
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="link" type="VARCHAR(255)"/>
+            <column name="max_students" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710424163986-19" author="Youcode (generated)">
+        <addNotNullConstraint columnDataType="INT" columnName="max_students" tableName="course"/>
+    </changeSet>
+    <changeSet id="1710424163986-20" author="Youcode (generated)">
+        <addUniqueConstraint columnNames="fees_id" constraintName="uc_course_fees_fees" tableName="course_fees"/>
+    </changeSet>
+    <changeSet id="1710424163986-21" author="Youcode (generated)">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_fees"
+                                 constraintName="fk_coufee_on_course" referencedColumnNames="id"
+                                 referencedTableName="course"/>
+    </changeSet>
+    <changeSet id="1710424163986-22" author="Youcode (generated)">
+        <addForeignKeyConstraint baseColumnNames="fees_id" baseTableName="course_fees"
+                                 constraintName="fk_coufee_on_fees" referencedColumnNames="id"
+                                 referencedTableName="fees"/>
+    </changeSet>
+    <changeSet id="1710424163986-23" author="Youcode (generated)">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_program"
+                                 constraintName="fk_coupro_on_course" referencedColumnNames="id"
+                                 referencedTableName="course"/>
+    </changeSet>
+    <changeSet id="1710424163986-24" author="Youcode (generated)">
+        <addForeignKeyConstraint baseColumnNames="program_id" baseTableName="course_program"
+                                 constraintName="fk_coupro_on_program" referencedColumnNames="id"
+                                 referencedTableName="program"/>
+    </changeSet>
+    <changeSet id="1710424163986-25" author="Youcode (generated)">
+        <dropForeignKeyConstraint baseTableName="program" constraintName="FKaj568gpopf2uee9br1351f7kf"/>
+    </changeSet>
+    <changeSet id="1710424163986-26" author="Youcode (generated)">
+        <dropForeignKeyConstraint baseTableName="course" constraintName="FKi3hjd30lm8j0cjnsiev5hpwib"/>
+    </changeSet>
+    <changeSet id="1710424163986-27" author="Youcode (generated)">
+        <dropColumn columnName="course_id" tableName="program"/>
+
+        <dropColumn columnName="day" tableName="program"/>
+    </changeSet>
+    <changeSet id="1710424163986-28" author="Youcode (generated)">
+        <dropColumn columnName="program_id" tableName="course"/>
+
+        <dropColumn columnName="students_in_person" tableName="course"/>
+
+        <dropColumn columnName="education_level" tableName="course"/>
+
+        <dropColumn columnName="type" tableName="course"/>
+    </changeSet>
+    <changeSet id="1710424163986-2" author="Youcode (generated)">
+        <addColumn tableName="program">
+            <column name="day" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710424163986-4" author="Youcode (generated)">
+        <addColumn tableName="course">
+            <column name="education_level" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710424163986-5" author="Youcode (generated)">
+        <dropColumn columnName="education_level" tableName="teacher_demand"/>
+
+        <dropColumn columnName="status" tableName="teacher_demand"/>
+    </changeSet>
+    <changeSet id="1710424163986-6" author="Youcode (generated)">
+        <addColumn tableName="teacher_demand">
+            <column name="education_level" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710424163986-7" author="Youcode (generated)">
+        <dropColumn columnName="pricing_plan" tableName="students_in_course"/>
+    </changeSet>
+    <changeSet id="1710424163986-8" author="Youcode (generated)">
+        <addColumn tableName="students_in_course">
+            <column name="pricing_plan" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710424163986-10" author="Youcode (generated)">
+        <addColumn tableName="teacher_demand">
+            <column name="status" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1710424163986-12" author="Youcode (generated)">
+        <addColumn tableName="course">
+            <column name="type" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

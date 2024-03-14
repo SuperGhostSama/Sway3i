@@ -24,6 +24,6 @@ public class CourseResponseDTO {
     private String city;
     private String educationLevel;
     private String type;
-    private int studentsInPerson;
+    private int maxStudents;
     private List<Long> programIds;
 }

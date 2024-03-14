@@ -95,29 +95,22 @@ public class CourseServiceImpl implements CourseService {
     }
 
     private Course convertToEntity(CourseRequestDTO courseRequest) {
+        // Retrieve the programs associated with the course
         List<Long> programIds = courseRequest.getProgramIds();
         List<Program> programs = new ArrayList<>();
-
         if (programIds != null && !programIds.isEmpty()) {
             for (Long programId : programIds) {
                 Program program = programRepository.findById(programId)
                         .orElseThrow(() -> new RuntimeException("Program not found with id: " + programId));
-
                 programs.add(program);
             }
         }
-        //These are the fixed fees
-        List<Long> hardcodedFeeIds = Arrays.asList(1L, 2L, 3L, 4L, 5L);
-        List<Fees> fees = new ArrayList<>();
 
-        for (Long feeId : hardcodedFeeIds) {
-            Fees fee = feesRepository.findById(feeId)
-                    .orElseThrow(() -> new RuntimeException("Fee not found with id: " + feeId));
+        // Retrieve the fixed set of fees based on their IDs
+        List<Fees> fixedFees = feesRepository.findAllById(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L));
 
-            fees.add(fee);
-        }
-
-        return Course.builder()
+        // Create a new course entity with the retrieved programs and fixed fees
+        Course course = Course.builder()
                 .createdAt(LocalDate.now())
                 .createdBy(userRepository.getUserById(courseRequest.getCreatedByUserId()))
                 .subject(courseRequest.getSubject())
@@ -129,14 +122,16 @@ public class CourseServiceImpl implements CourseService {
                 .type(courseRequest.getType())
                 .maxStudents(courseRequest.getMaxStudents())
                 .programs(programs)
-                .fees(fees)
+                .fees(fixedFees)
                 .build();
+
+        return course;
     }
 
     private CourseResponseDTO convertToDTO(Course course) {
         return CourseResponseDTO.builder()
                 .id(course.getId())
-                .createdAt(course.getCreatedAt())
+                .createdAt(LocalDate.now())
                 .createdByUserId(userRepository.getUserById(course.getCreatedBy().getId()).getId())
                 .subject(course.getSubject())
                 .courseDetails(course.getCourseDetails())

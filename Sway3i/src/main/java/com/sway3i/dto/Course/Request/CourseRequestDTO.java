@@ -16,8 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CourseRequestDTO {
-
-    private LocalDate createdAt;
     private Long createdByUserId;
     private String subject;
     private String courseDetails;

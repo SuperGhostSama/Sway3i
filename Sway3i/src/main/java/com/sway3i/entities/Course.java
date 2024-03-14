@@ -49,7 +49,7 @@ public class Course {
     private List<Program> programs;
 
 
-    @OneToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Fees> fees;
 
     private String link;

@@ -30,6 +30,7 @@ import { FeesComponent } from './components/dashboard/fees/fees.component';
 import { ProgramComponent } from './components/dashboard/program/program.component';
 import { UsersComponent } from './components/dashboard/users/users.component';
 import { AllTeacherDemandsComponent } from './components/dashboard/all-teacher-demands/all-teacher-demands.component';
+import { MyCoursesComponent } from './components/dashboard/my-courses/my-courses.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AllTeacherDemandsComponent } from './components/dashboard/all-teacher-d
     FeesComponent,
     ProgramComponent,
     UsersComponent,
-    AllTeacherDemandsComponent
+    AllTeacherDemandsComponent,
+    MyCoursesComponent
   ],
   imports: [
     BrowserModule,

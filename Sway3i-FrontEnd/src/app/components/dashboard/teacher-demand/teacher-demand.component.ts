@@ -12,7 +12,11 @@ export class TeacherDemandComponent {
   educationLevel: string = "HIGH_SCHOOL";
   description: string = "Looking for a teacher for advanced math classes";
 
+  showForm: boolean = false;
 
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
 
   
 }

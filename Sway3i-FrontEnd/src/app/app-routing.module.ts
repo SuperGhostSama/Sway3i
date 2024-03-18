@@ -19,6 +19,7 @@ import { FeesComponent } from './components/dashboard/fees/fees.component';
 import { ProgramComponent } from './components/dashboard/program/program.component';
 import { UsersComponent } from './components/dashboard/users/users.component';
 import { AllTeacherDemandsComponent } from './components/dashboard/all-teacher-demands/all-teacher-demands.component';
+import { MyCoursesComponent } from './components/dashboard/my-courses/my-courses.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
       { path: 'teacher-demand', component: TeacherDemandComponent },
       { path: 'all-teachers-demands', component: AllTeacherDemandsComponent },
       { path: 'courses', component: CoursesComponent },
+      { path: 'my-courses', component: MyCoursesComponent },
       { path: 'fees', component: FeesComponent },
       { path: 'program', component: ProgramComponent },
       { path: 'users', component: UsersComponent },

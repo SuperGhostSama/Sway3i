@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./program.component.css']
 })
 export class ProgramComponent {
+  showForm: boolean = false;
+
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
 
 }

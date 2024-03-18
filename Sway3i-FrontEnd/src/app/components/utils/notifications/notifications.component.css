@@ -1,5 +1,9 @@
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
+*{
+  background-color: transparent;
+}
+
 .notification {
     position: fixed;
     z-index: 1000;

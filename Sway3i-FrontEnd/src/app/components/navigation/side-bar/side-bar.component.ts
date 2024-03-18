@@ -8,14 +8,15 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent {
   userRole: string | null = localStorage.getItem('role');
-
+  userFullName : string | null = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
   constructor(private router: Router) {}
 
   logout() {
     
     localStorage.clear(); 
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
+
   
 }

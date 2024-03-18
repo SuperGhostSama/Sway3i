@@ -69,6 +69,18 @@ public class TeacherDemandServiceImpl implements TeacherDemandService {
     @Override
     public void acceptTeacherDemand(Long id) {
         updateDemandStatus(id, DemandStatus.ACCEPTED);
+        // Retrieve the demand by its ID
+        TeacherDemand demand = teacherDemandRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Demand not found with id: " + id));
+
+        // Retrieve the user who created the demand
+        User createdBy = demand.getCreatedBy();
+
+        // Set isValid to true for the user who created the demand
+        createdBy.setValid(true);
+
+        // Save the updated user entity
+        userRepository.save(createdBy);
     }
 
     @Override

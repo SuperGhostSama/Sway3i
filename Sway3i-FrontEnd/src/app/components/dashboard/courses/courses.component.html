@@ -1,1 +1,74 @@
-<p>courses works!</p>
+<div class="container mt-5">
+    <form>
+        <div class="mb-3">
+            <label for="createdByUserId" class="form-label">Created By User ID</label>
+            <input type="number" class="form-control" id="createdByUserId" placeholder="Enter User ID" required>
+        </div>
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" placeholder="Enter Subject" required>
+        </div>
+        <div class="mb-3">
+            <label for="courseDetails" class="form-label">Course Details</label>
+            <input type="text" class="form-control" id="courseDetails" placeholder="Enter Course Details" required>
+        </div>
+        <div class="mb-3">
+            <label for="courseIsFor" class="form-label">Course is For</label>
+            <input type="text" class="form-control" id="courseIsFor" placeholder="Enter Target Audience" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" placeholder="Enter Price" required>
+        </div>
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" placeholder="Enter City" required>
+        </div>
+        <div class="mb-3">
+            <label for="educationLevel" class="form-label">Education Level</label>
+            <select class="form-select" id="educationLevel" required>
+                <option value="PRIMARY_SCHOOL">Primary School</option>
+                <option value="MIDDLE_SCHOOL">Middle School</option>
+                <option value="HIGH_SCHOOL" selected>High School</option>
+                <option value="BACHELOR_DEGREE">Bachelor's Degree</option>
+                <option value="MASTERS_DEGREE">Master's Degree</option>
+                <option value="PHD_DEGREE">PhD Degree</option>
+                <option value="PROFESSIONAL_QUALIFICATION">Professional Qualification</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Course Type</label>
+            <select class="form-select" id="type" required>
+                <option value="In_Person">In Person</option>
+                <option value="Online" selected>Online</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="maxStudents" class="form-label">Maximum Students</label>
+            <input type="number" class="form-control" id="maxStudents" placeholder="Enter Maximum Students" required>
+        </div>
+        <div class="mb-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="programDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Programs
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="programDropdown">
+                    <li>
+                        <input class="form-check-input me-1" type="checkbox" value="1" id="program1">
+                        <label class="form-check-label" for="program1">Program 1</label>
+                    </li>
+                    <li>
+                        <input class="form-check-input me-1" type="checkbox" value="2" id="program2">
+                        <label class="form-check-label" for="program2">Program 2</label>
+                    </li>
+                    <li>
+                        <input class="form-check-input me-1" type="checkbox" value="3" id="program3">
+                        <label class="form-check-label" for="program3">Program 3</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

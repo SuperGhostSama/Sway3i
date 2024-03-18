@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 border border-4 rounded-4 p-5">
     <form>
         <div class="mb-3">
             <label for="createdByUserId" class="form-label">Created By User ID</label>
@@ -27,20 +27,22 @@
         <div class="mb-3">
             <label for="educationLevel" class="form-label">Education Level</label>
             <select class="form-select" id="educationLevel" required>
-                <option value="PRIMARY_SCHOOL">Primary School</option>
-                <option value="MIDDLE_SCHOOL">Middle School</option>
-                <option value="HIGH_SCHOOL" selected>High School</option>
-                <option value="BACHELOR_DEGREE">Bachelor's Degree</option>
-                <option value="MASTERS_DEGREE">Master's Degree</option>
-                <option value="PHD_DEGREE">PhD Degree</option>
-                <option value="PROFESSIONAL_QUALIFICATION">Professional Qualification</option>
+                <option selected disabled class="bg-white">Select Education Level</option>
+                <option class="bg-white" value="PRIMARY_SCHOOL">Primary School</option>
+                <option class="bg-white" value="MIDDLE_SCHOOL">Middle School</option>
+                <option class="bg-white" value="HIGH_SCHOOL">High School</option>
+                <option class="bg-white" value="BACHELOR_DEGREE">Bachelor's Degree</option>
+                <option class="bg-white" value="MASTERS_DEGREE">Master's Degree</option>
+                <option class="bg-white" value="PHD_DEGREE">PhD Degree</option>
+                <option class="bg-white" value="PROFESSIONAL_QUALIFICATION">Professional Qualification</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="type" class="form-label">Course Type</label>
             <select class="form-select" id="type" required>
-                <option value="In_Person">In Person</option>
-                <option value="Online" selected>Online</option>
+                <option selected disabled class="bg-white">Select Course Type</option>
+                <option class="bg-white" value="In_Person">In Person</option>
+                <option class="bg-white" value="Online">Online</option>
             </select>
         </div>
         <div class="mb-3">
@@ -53,17 +55,17 @@
                     Select Programs
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="programDropdown">
-                    <li>
-                        <input class="form-check-input me-1" type="checkbox" value="1" id="program1">
-                        <label class="form-check-label" for="program1">Program 1</label>
+                    <li class="bg-white">
+                        <input class="form-check-input me-2 ms-2" type="checkbox" value="1" id="program1">
+                        <label class="form-check-label bg-white" for="program1">Program 1</label>
                     </li>
-                    <li>
-                        <input class="form-check-input me-1" type="checkbox" value="2" id="program2">
-                        <label class="form-check-label" for="program2">Program 2</label>
+                    <li class="bg-white">
+                        <input class="form-check-input me-2 ms-2" type="checkbox" value="2" id="program2">
+                        <label class="form-check-label bg-white" for="program2">Program 2</label>
                     </li>
-                    <li>
-                        <input class="form-check-input me-1" type="checkbox" value="3" id="program3">
-                        <label class="form-check-label" for="program3">Program 3</label>
+                    <li class="bg-white">
+                        <input class="form-check-input me-2 ms-2" type="checkbox" value="3" id="program3">
+                        <label class="form-check-label bg-white" for="program3">Program 3</label>
                     </li>
                 </ul>
             </div>

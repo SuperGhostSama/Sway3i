@@ -1,1 +1,28 @@
-<p>all-teacher-demands works!</p>
+<div class="mt-5">
+    <table class="table">
+        <thead >
+          <tr >
+            <th scope="col" class="text-center">Created By ID</th>
+            <th scope="col" class="text-center">Subject</th>
+            <th scope="col" class="text-center">Education Level</th>
+            <th scope="col" class="text-center">Description</th>
+            <th scope="col" class="text-center">Status</th>
+            <th scope="col" class="text-center">Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">{{ createdById }}</td>
+            <td class="text-center">{{ subject }}</td>
+            <td class="text-center">{{ educationLevel }}</td>
+            <td class="text-center">{{ description }}</td>
+            <td class="text-center">In Progress</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success me-2" >Accept</button>
+                <button type="button" class="btn btn-danger" >Refuse</button>
+            </td>
+          </tr>
+    
+        </tbody>
+    </table>
+</div>

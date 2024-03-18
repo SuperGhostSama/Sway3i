@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class TeacherDemandComponent {
 
+  createdById: number = 10;
+  subject: string = "Mathematics";
+  educationLevel: string = "HIGH_SCHOOL";
+  description: string = "Looking for a teacher for advanced math classes";
+
+
+
+  
 }

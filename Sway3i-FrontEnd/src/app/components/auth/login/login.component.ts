@@ -24,6 +24,12 @@ export class LoginComponent {
 
         localStorage.setItem('token', response.token);
         localStorage.setItem('refreshToken', response.refreshToken);
+        localStorage.setItem('firstName', response.firstName);
+        localStorage.setItem('lastName', response.lastName);
+        localStorage.setItem('city', response.city);
+        localStorage.setItem('email', response.email);
+        localStorage.setItem('role', response.role.name);
+        localStorage.setItem('authorities', response.role.authorities);
 
         this.router.navigate(['/']);
         this.notificationService.show(['You have been successfully logged in'], 'success');

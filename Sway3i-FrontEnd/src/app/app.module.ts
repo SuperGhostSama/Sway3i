@@ -29,6 +29,7 @@ import { RouterModule } from '@angular/router';
 import { FeesComponent } from './components/dashboard/fees/fees.component';
 import { ProgramComponent } from './components/dashboard/program/program.component';
 import { UsersComponent } from './components/dashboard/users/users.component';
+import { AllTeacherDemandsComponent } from './components/dashboard/all-teacher-demands/all-teacher-demands.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UsersComponent } from './components/dashboard/users/users.component';
     CoursesComponent,
     FeesComponent,
     ProgramComponent,
-    UsersComponent
+    UsersComponent,
+    AllTeacherDemandsComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ import { CoursesComponent } from './components/dashboard/courses/courses.compone
 import { FeesComponent } from './components/dashboard/fees/fees.component';
 import { ProgramComponent } from './components/dashboard/program/program.component';
 import { UsersComponent } from './components/dashboard/users/users.component';
+import { AllTeacherDemandsComponent } from './components/dashboard/all-teacher-demands/all-teacher-demands.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
     component: DasboardLayoutComponent,
     children: [
       { path: 'teacher-demand', component: TeacherDemandComponent },
+      { path: 'all-teachers-demands', component: AllTeacherDemandsComponent },
       { path: 'courses', component: CoursesComponent },
       { path: 'fees', component: FeesComponent },
       { path: 'program', component: ProgramComponent },

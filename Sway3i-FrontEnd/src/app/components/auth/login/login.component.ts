@@ -24,6 +24,7 @@ export class LoginComponent {
 
         localStorage.setItem('token', response.token);
         localStorage.setItem('refreshToken', response.refreshToken);
+        localStorage.setItem('id', response.userId);
         localStorage.setItem('firstName', response.firstName);
         localStorage.setItem('lastName', response.lastName);
         localStorage.setItem('city', response.city);

@@ -23,6 +23,7 @@ import { CoursesListPageComponent } from './components/pages/courses-list-page/c
 import { CoursesCardsComponent } from './components/utils/courses-cards/courses-cards.component';
 import { CoursesPricingComponent } from './components/pages/courses-pricing/courses-pricing.component';
 import { AboutCoursePageComponent } from './components/pages/about-course-page/about-course-page.component';
+import { TeacherDemandComponent } from './components/dashboard/teacher-demand/teacher-demand.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AboutCoursePageComponent } from './components/pages/about-course-page/a
     CoursesListPageComponent,
     CoursesCardsComponent,
     CoursesPricingComponent,
-    AboutCoursePageComponent
+    AboutCoursePageComponent,
+    TeacherDemandComponent
   ],
   imports: [
     BrowserModule,

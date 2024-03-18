@@ -13,44 +13,37 @@ import { CoursesListPageComponent } from './components/pages/courses-list-page/c
 import { CoursesCardsComponent } from './components/utils/courses-cards/courses-cards.component';
 import { CoursesPricingComponent } from './components/pages/courses-pricing/courses-pricing.component';
 import { AboutCoursePageComponent } from './components/pages/about-course-page/about-course-page.component';
+import { TeacherDemandComponent } from './components/dashboard/teacher-demand/teacher-demand.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
     children: [
-      { path: '', component: LandingPageComponent},
-      { path: 'all-mentors', 
-        component: AllMentorsPageComponent, 
-        children: [
-          { path : '' , component: MentorsCardsComponent},
-        ]},
+      { path: '', component: LandingPageComponent },
+      { path: 'all-mentors', component: AllMentorsPageComponent, children: [{ path: '', component: MentorsCardsComponent }] },
       { path: 'join-as-teacher', component: JoinAsTeacherPageComponent },
-      { path: 'courses-list', 
-        component: CoursesListPageComponent,
-        children: [
-          {path : '' , component: CoursesCardsComponent}
-        ]},
+      { path: 'courses-list', component: CoursesListPageComponent, children: [{ path: '', component: CoursesCardsComponent }] },
       { path: 'courses-pricing', component: CoursesPricingComponent },
       { path: 'about-course', component: AboutCoursePageComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      // Wildcard route for handling unknown paths
+      { path: '**', component: LandingPageComponent } // Redirect to LandingPageComponent for unknown paths
     ],
   },
   {
     path: '',
     component: DasboardLayoutComponent,
-    canActivate: [authGuard],
+    canActivate: [authGuard], // Example guard to restrict access to DashboardLayoutComponent
     children: [
-      // { path: 'Competitions', component: CompetitionsComponent, canActivate: [authGuard] },
-      // { path: 'Members', component: MembersComponent, canActivate: [authGuard] },
-      // { path: 'Podium', component: PodiumComponent, canActivate: [authGuard] },
-      // { path: 'Results', component: ResultsComponent, canActivate: [authGuard] },
-      // { path: 'MyCompetitions', component: MyCompetitionsComponent, canActivate: [authGuard] },
-      // { path: 'Verification', component: MemberVerificationComponent, canActivate: [authGuard]}
+      { path: 'TeacherDemand', component: TeacherDemandComponent },
+      // Wildcard route for handling unknown paths
+      { path: '**', redirectTo: '/TeacherDemand' } // Redirect to TeacherDemandComponent for unknown paths
     ],
   }
 ]; 
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

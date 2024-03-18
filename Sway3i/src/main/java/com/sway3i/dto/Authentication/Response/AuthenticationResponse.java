@@ -19,4 +19,5 @@ public class AuthenticationResponse {
     private String city;
     private String email;
     private Role role;
+    private Boolean isValid;
 }

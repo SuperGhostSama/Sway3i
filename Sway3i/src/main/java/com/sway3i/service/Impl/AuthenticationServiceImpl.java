@@ -108,6 +108,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .city(user.getCity())
                 .email(user.getEmail())
                 .role(user.getRole())
+                .isValid(user.isValid())
                 .build();
     }
 

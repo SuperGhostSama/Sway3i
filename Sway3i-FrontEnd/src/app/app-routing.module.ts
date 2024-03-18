@@ -14,36 +14,46 @@ import { CoursesCardsComponent } from './components/utils/courses-cards/courses-
 import { CoursesPricingComponent } from './components/pages/courses-pricing/courses-pricing.component';
 import { AboutCoursePageComponent } from './components/pages/about-course-page/about-course-page.component';
 import { TeacherDemandComponent } from './components/dashboard/teacher-demand/teacher-demand.component';
+import { CoursesComponent } from './components/dashboard/courses/courses.component';
+import { FeesComponent } from './components/dashboard/fees/fees.component';
+import { ProgramComponent } from './components/dashboard/program/program.component';
+import { UsersComponent } from './components/dashboard/users/users.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
     children: [
-      { path: '', component: LandingPageComponent },
-      { path: 'all-mentors', component: AllMentorsPageComponent, children: [{ path: '', component: MentorsCardsComponent }] },
+      { path: '', component: LandingPageComponent},
+      { path: 'all-mentors', 
+        component: AllMentorsPageComponent, 
+        children: [
+          { path : '' , component: MentorsCardsComponent},
+        ]},
       { path: 'join-as-teacher', component: JoinAsTeacherPageComponent },
-      { path: 'courses-list', component: CoursesListPageComponent, children: [{ path: '', component: CoursesCardsComponent }] },
+      { path: 'courses-list', 
+        component: CoursesListPageComponent,
+        children: [
+          {path : '' , component: CoursesCardsComponent}
+        ]},
       { path: 'courses-pricing', component: CoursesPricingComponent },
       { path: 'about-course', component: AboutCoursePageComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      // Wildcard route for handling unknown paths
-      { path: '**', component: LandingPageComponent } // Redirect to LandingPageComponent for unknown paths
     ],
   },
   {
-    path: '',
+    path: 'dashboard',
     component: DasboardLayoutComponent,
-    canActivate: [authGuard], // Example guard to restrict access to DashboardLayoutComponent
     children: [
-      { path: 'TeacherDemand', component: TeacherDemandComponent },
-      // Wildcard route for handling unknown paths
-      { path: '**', redirectTo: '/TeacherDemand' } // Redirect to TeacherDemandComponent for unknown paths
+      { path: 'teacher-demand', component: TeacherDemandComponent },
+      { path: 'courses', component: CoursesComponent },
+      { path: 'fees', component: FeesComponent },
+      { path: 'program', component: ProgramComponent },
+      { path: 'users', component: UsersComponent },
     ],
   }
 ]; 
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

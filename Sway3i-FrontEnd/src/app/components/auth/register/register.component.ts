@@ -24,27 +24,24 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       city: ['', [Validators.required]],
+      role: ['', [Validators.required]],
     });
   }
 
   onSubmit() {
-    // if (this.registerForm.valid) {
-    //   const registerRequest = this.registerForm.value;
-    //   this.authService.register(registerRequest).subscribe(
-    //     (response) => {
-    //       // Handle successful registration
-    //       console.log('Registration successful:', response);
-          
-    //       this.router.navigate(['/login']);
-    //       this.notificationService.show(['You have been successfully registered'], 'success');
+    if (this.registerForm.valid) {
+      this.authService.register(this.registerForm.value).subscribe(
+        (response) => {
+          this.notificationService.show(['You have successfully SignedUp'], 'success');
+          this.router.navigate(['/login']);
+        },
+        (error) => {
 
-    //     },
-    //     (error) => {
-    //       // Handle registration error
-    //       console.error('Registration error:', error);
-    //       this.notificationService.show([error.error.message], 'error');
-    //     }
-    //   );
-    // }
+          this.notificationService.show([error.error.message], 'error');
+
+        }
+      );
+    }
+
   }
 }

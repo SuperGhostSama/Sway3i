@@ -12,11 +12,13 @@ export class NavbarComponent {
   
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('authToken') !== null;
+    return !!localStorage.getItem('token');
   }
 
-  logout(): void {
-    localStorage.clear();
+  logout() {
+    
+    localStorage.clear(); 
+
     this.router.navigate(['/login']);
   }
 }

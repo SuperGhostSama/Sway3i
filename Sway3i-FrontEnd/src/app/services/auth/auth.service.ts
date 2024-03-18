@@ -12,13 +12,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  // register(request: RegisterRequestDTO): Observable<AuthenticationResponseDTO> {
-  //   const registerUrl = `${this.apiUrl}/register`;
-  //   return this.http.post<AuthenticationResponseDTO>(registerUrl, request);
-  // }
+  register(request: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, request);
+  }
 
-  // authenticate(request: AuthenticationRequestDTO): Observable<AuthenticationResponseDTO> {
-  //   const authenticateUrl = `${this.apiUrl}/authenticate`;
-  //   return this.http.post<AuthenticationResponseDTO>(authenticateUrl, request);
-  // }
+  authenticate(request: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/authenticate`, request);
+  }
+
+  refreshToken(refreshTokenRequest: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/refresh-token`, refreshTokenRequest);
+  }
+  
 }

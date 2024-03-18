@@ -19,27 +19,21 @@ export class LoginComponent {
     ) {}
 
   onSubmit() {
-    // this.authService.authenticate(this.loginRequest).subscribe(
-    //   (response) => {
-    //     console.log('Authentication successful:', response);
+    this.authService.authenticate(this.loginRequest).subscribe(
+      (response) => {
 
-    //     localStorage.setItem('authToken', response.token);
-    //     localStorage.setItem('refreshToken', response.refreshToken);
-    //     localStorage.setItem('name', response.name);
-    //     localStorage.setItem('familyName', response.familyName);
-    //     localStorage.setItem('email', response.email);
-    //     localStorage.setItem('role', response.role.name);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('refreshToken', response.refreshToken);
 
-    //     const authorityNames = response.role.authorities.map((authority: any) => authority.name);
-    //     localStorage.setItem('authorities', JSON.stringify(authorityNames));
+        this.router.navigate(['/']);
+        this.notificationService.show(['You have been successfully logged in'], 'success');
 
-    //     this.router.navigate(['/MyCompetitions']);
-    //     this.notificationService.show(['You have been successfully logged in'], 'success');
-    //   },
-    //   (error) => {
-    //     console.error('Authentication failed:', error);
-    //     this.notificationService.show([error.error.message], 'error');
-    //   }
-    // );
+      },
+      (error) => {
+
+        this.notificationService.show([error.error.message], 'error');
+        
+      }
+    );
   }
 }

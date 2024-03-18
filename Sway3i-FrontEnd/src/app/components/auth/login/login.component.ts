@@ -21,6 +21,7 @@ export class LoginComponent {
   onSubmit() {
     this.authService.authenticate(this.loginRequest).subscribe(
       (response) => {
+        console.log('Login response:', response);
 
         localStorage.setItem('token', response.token);
         localStorage.setItem('refreshToken', response.refreshToken);
@@ -30,6 +31,7 @@ export class LoginComponent {
         localStorage.setItem('city', response.city);
         localStorage.setItem('email', response.email);
         localStorage.setItem('role', response.role.name);
+        localStorage.setItem('isValid', response.isValid);
 
         this.router.navigate(['/']);
         this.notificationService.show(['You have been successfully logged in'], 'success');

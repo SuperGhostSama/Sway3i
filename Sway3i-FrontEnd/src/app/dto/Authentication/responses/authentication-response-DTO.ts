@@ -10,4 +10,5 @@ export interface AuthenticationResponse {
   city: string;
   email: string;
   role: Role;
+  isValid: boolean;
 }

@@ -59,11 +59,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let fee of fees">
-                <td class="text-center">{{ fee.name }}</td>
+                <td class="text-center fw-semibold">{{ fee.name }}</td>
                 <td class="text-center fw-semibold">{{ fee.percentage }} %</td>
                 <td class="text-center">
                     <button type="button" class="btn btn-warning me-2 fw-semibold" (click)="showUpdateForm = true; updatedName = fee.name; updatedPercentage = fee.percentage; feeId = fee.id ">Update</button>
-                    <button type="button" class="btn btn-danger fw-semibold" >Delete</button>
                 </td>
             </tr>
         </tbody>

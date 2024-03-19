@@ -84,19 +84,6 @@ export class MyCoursesComponent {
     );
   }
 
-  deleteCourse(id: number): void {
-    this.courseService.deleteCourse(id).subscribe(
-      () => {
-        this.getAllCoursesByEmail(localStorage.getItem('email')!);
-      },
-      (error) => {
-        console.error('Error deleting course:', error);
-      }
-    );
-  }
-
-
-
   onSubmit(): void {
     const courseRequest: CourseRequestDTO = {
       createdByUserId: localStorage.getItem('id') as unknown as number,
@@ -138,6 +125,23 @@ export class MyCoursesComponent {
         // If the programId is already in the array, remove it
         this.programIds.splice(index, 1);
     }
+  }
+
+
+  deleteCourse(id: number): void {
+    if (confirm('Are you sure you want to delete this course?')) {
+        this.courseService.deleteCourse(id).subscribe(
+            () => {
+                // Remove the deleted course from the allCourses array
+                this.allCourses = this.allCourses.filter(course => course.id !== id);
+                this.notificationService.show(['Course deleted successfully'], 'success');
+            },
+            (error) => {
+                this.notificationService.show([error.error.message], 'error');
+            }
+        );
+    }
 }
+
 }
 

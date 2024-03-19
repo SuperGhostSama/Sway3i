@@ -1,1 +1,30 @@
-<p>users works!</p>
+<div class="mt-5 border border-4 rounded-4 p-5">
+    <form (ngSubmit)="onSubmit()">
+        <div>
+            <label for="studentSelect">Select Student:</label>
+            <select id="studentSelect" [(ngModel)]="selectedStudentId" name="selectedStudentId">
+                <option *ngFor="let student of students" [value]="student.id">{{ student.firstName }} {{ student.lastName}}</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="courseSelect">Select Course:</label>
+            <select id="courseSelect" [(ngModel)]="selectedCourseId" name="selectedCourseId">
+                <option *ngFor="let course of courses" [value]="course.id">{{ course.courseDetails }}</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="pricingPlanSelect">Select Pricing Plan:</label>
+            <select id="pricingPlanSelect" [(ngModel)]="selectedPricingPlan" name="selectedPricingPlan">
+                <option value="ONE_MONTH">One Month</option>
+                <option value="SIX_MONTHS">Six Months</option>
+                <option value="TEN_MONTHS">Ten Months</option>
+            </select>
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary mt-4">Give Course To Student</button>
+    </form>
+    
+</div>

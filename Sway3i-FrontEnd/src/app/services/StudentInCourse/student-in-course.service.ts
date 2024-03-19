@@ -10,7 +10,7 @@ import { StudentsInCourseResponseDTO } from 'src/app/dto/StudentInCourse/respons
   providedIn: 'root'
 })
 export class StudentsInCourseService {
-  private apiUrl = `${environment.api}/students-in-courses`;
+  private apiUrl = `${environment.api}students-in-courses`;
 
   constructor(private http: HttpClient) { }
 

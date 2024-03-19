@@ -1,4 +1,4 @@
-package com.sway3i.controller;
+package com.sway3i.controllers;
 
 import com.sway3i.dto.Program.Request.ProgramRequestDTO;
 import com.sway3i.dto.Program.Response.ProgramResponseDTO;

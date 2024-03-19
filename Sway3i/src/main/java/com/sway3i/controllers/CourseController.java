@@ -3,6 +3,7 @@ package com.sway3i.controllers;
 import com.sway3i.dto.Course.Request.CourseRequestDTO;
 import com.sway3i.dto.Course.Response.CourseDetailsResponseDTO;
 import com.sway3i.dto.Course.Response.CourseResponseDTO;
+import com.sway3i.dto.Course.Response.CourseWithDetailsResponseDTO;
 import com.sway3i.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,11 +21,11 @@ public class CourseController {
     private final CourseService courseService;
 
 
-    @GetMapping
-    public ResponseEntity<List<CourseResponseDTO>> getAllCourses() {
-        List<CourseResponseDTO> courses = courseService.getAllCourses();
-        return new ResponseEntity<>(courses, HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<CourseResponseDTO>> getAllCourses() {
+//        List<CourseResponseDTO> courses = courseService.getAllCourses();
+//        return new ResponseEntity<>(courses, HttpStatus.OK);
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<CourseResponseDTO> getCourseById(@PathVariable Long id) {
@@ -61,5 +62,11 @@ public class CourseController {
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
         courseService.deleteCourse(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+    @GetMapping("/all")
+    public List<CourseWithDetailsResponseDTO> getAllCourses() {
+        return courseService.getAllCourses();
     }
 }

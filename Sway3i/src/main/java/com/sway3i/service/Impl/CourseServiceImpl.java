@@ -3,6 +3,9 @@ package com.sway3i.service.Impl;
 import com.sway3i.dto.Course.Request.CourseRequestDTO;
 import com.sway3i.dto.Course.Response.CourseDetailsResponseDTO;
 import com.sway3i.dto.Course.Response.CourseResponseDTO;
+import com.sway3i.dto.Course.Response.CourseWithDetailsResponseDTO;
+import com.sway3i.dto.Utils.ProgramDTO;
+import com.sway3i.dto.Utils.UserDTO;
 import com.sway3i.entities.Course;
 import com.sway3i.entities.Fees;
 import com.sway3i.entities.Program;
@@ -32,13 +35,13 @@ public class CourseServiceImpl implements CourseService {
     private final ProgramRepository programRepository;
     private final FeesRepository feesRepository;
 
-    @Override
-    public List<CourseResponseDTO> getAllCourses() {
-        List<Course> courses = courseRepository.findAll();
-        return courses.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<CourseResponseDTO> getAllCourses() {
+//        List<Course> courses = courseRepository.findAll();
+//        return courses.stream()
+//                .map(this::convertToDTO)
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public Optional<CourseResponseDTO> getCourseById(Long id) {
@@ -146,4 +149,53 @@ public class CourseServiceImpl implements CourseService {
                         .collect(Collectors.toList()))
                 .build();
     }
+
+
+
+    //Updated getAllCourses method to return CourseWithDetailsResponseDTO
+
+    @Override
+    public List<CourseWithDetailsResponseDTO> getAllCourses() {
+        List<Course> courses = courseRepository.findAll();
+        return courses.stream()
+                .map(this::convertToDetailsDTO)
+                .collect(Collectors.toList());
+    }
+
+    private CourseWithDetailsResponseDTO convertToDetailsDTO(Course course) {
+        return CourseWithDetailsResponseDTO.builder()
+                .id(course.getId())
+                .createdAt(course.getCreatedAt())
+                .createdByUser(convertToUserDTO(course.getCreatedBy()))
+                .subject(course.getSubject())
+                .courseDetails(course.getCourseDetails())
+                .courseIsFor(course.getCourseIsFor())
+                .price(course.getPrice())
+                .city(course.getCity())
+                .educationLevel(course.getEducationLevel().name())
+                .type(course.getType().name())
+                .maxStudents(course.getMaxStudents())
+                .programs(convertToProgramDTOList(course.getPrograms()))
+                .build();
+    }
+
+    private UserDTO convertToUserDTO(User user) {
+        return UserDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .build();
+    }
+
+    private List<ProgramDTO> convertToProgramDTOList(List<Program> programs) {
+        return programs.stream()
+                .map(program -> ProgramDTO.builder()
+                        .id(program.getId())
+                        .date(program.getDay())
+                        .time(program.getTime())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
 }

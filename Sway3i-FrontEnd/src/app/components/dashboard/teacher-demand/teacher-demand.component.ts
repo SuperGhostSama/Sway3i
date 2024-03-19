@@ -54,7 +54,6 @@ export class TeacherDemandComponent implements OnInit{
     this.teacherDemandService.createTeacherDemand(teacherDemandRequest).subscribe(
       (response: TeacherDemandResponseDTO) => {
         console.log('Teacher demand created:', response);
-        this.notificationService.show(['Teacher Demand successfully created'], 'success');
 
         
         this.subject = '';
@@ -65,6 +64,7 @@ export class TeacherDemandComponent implements OnInit{
         this.showForm = false;
 
         this.ngOnInit();
+        this.notificationService.show(['Teacher Demand successfully created'], 'success');
       },
       (error) => {
         // console.error('Error creating teacher demand:', error);
@@ -87,5 +87,9 @@ export class TeacherDemandComponent implements OnInit{
     );
   }
 
+  isDemandAccepted(): boolean {
+    return this.teacherDemands.some(demand => demand.status.toString() === 'ACCEPTED');
+  }
+  
 
 }

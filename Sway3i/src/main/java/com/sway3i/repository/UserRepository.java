@@ -3,6 +3,7 @@ package com.sway3i.repository;
 import com.sway3i.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -13,4 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User getUserById(Long createdByUserId);
 
     User getUserByEmail(String email);
+
+    List<User> findAllByRoleName(String roleName);
+
 }

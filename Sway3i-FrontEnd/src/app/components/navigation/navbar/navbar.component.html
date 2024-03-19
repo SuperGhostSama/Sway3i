@@ -19,52 +19,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle fw-bold me-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      PrimarySchool
+              <li class="nav-item ">
+                  <a class="nav-link fw-bold me-3" routerLink="/all-mentors" role="button">
+                      Mentors
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item bg-white" href="#">PrimarySchool1</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">PrimarySchool2</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">PrimarySchool3</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">PrimarySchool4</a></li>
-                  </ul>
               </li>
               
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle fw-bold me-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      MiddleSchool
+              <li class="nav-item ">
+                  <a class="nav-link fw-bold me-3" routerLink="/courses-list" role="button">
+                      Courses
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item bg-white" href="#">MiddleSchool1</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">MiddleSchool2</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">MiddleSchool3</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">MiddleSchool4</a></li>
-                  </ul>
               </li>
 
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle fw-bold me-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      HighSchool
+              <li class="nav-item " *ngIf="isLoggedIn();">
+                  <a class="nav-link fw-bold me-3" routerLink="/dashboard" role="button">
+                      Dashboard
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item bg-white" href="#">HighSchool1</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">HighSchool2</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">HighSchool3</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">HighSchool4</a></li>
-                  </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle fw-bold me-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      College
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item bg-white" href="#">College1</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">College2</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">College3</a></li>
-                      <li><a class="dropdown-item bg-white" href="#">College4</a></li>
-                  </ul>
               </li>
           </ul>
 

@@ -23,23 +23,22 @@
 
 <div class="mt-5 border border-2 rounded-3 bg-white p-5">
     <table class="table">
-        <thead >
-          <tr >
+        <thead>
+          <tr>
             <th scope="col" class="text-center">Name</th>
             <th scope="col" class="text-center">Percentage</th>
             <th scope="col" class="text-center">Operations</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="text-center">In Progress</td>
-            <td class="text-center">20 %</td>
+          <tr *ngFor="let fee of fees">
+            <td class="text-center">{{ fee.name }}</td>
+            <td class="text-center fw-semibold">{{ fee.percentage }} %</td>
             <td class="text-center">
-                <button type="button" class="btn btn-warning me-2" >Update</button>
-                <button type="button" class="btn btn-danger" >Delete</button>
+                <button type="button" class="btn btn-warning me-2 fw-semibold" >Update</button>
+                <button type="button" class="btn btn-danger fw-semibold" >Delete</button>
             </td>
           </tr>
-    
         </tbody>
     </table>
 </div>

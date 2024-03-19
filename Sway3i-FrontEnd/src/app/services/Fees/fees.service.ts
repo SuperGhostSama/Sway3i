@@ -9,7 +9,7 @@ import { FeesResponseDTO } from 'src/app/dto/Fees/responses/fees-response-DTO';
   providedIn: 'root'
 })
 export class FeesService {
-  private apiUrl = `${environment.api}/fees`;
+  private apiUrl = `${environment.api}fees`;
 
   constructor(private http: HttpClient) { }
 

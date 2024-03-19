@@ -1,32 +1,35 @@
+
 <div class="container mt-5 border border-4 rounded-4 p-5"  *ngIf="showForm">
-    <form>
-        <div class="mb-3">
-            <label for="createdByUserId" class="form-label">Created By User ID</label>
-            <input type="number" class="form-control" id="createdByUserId" placeholder="Enter User ID" required>
-        </div>
+    <form (ngSubmit)="onSubmit()">
+
         <div class="mb-3">
             <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control" id="subject" placeholder="Enter Subject" required>
+            <input type="text" class="form-control" id="subject" placeholder="Enter Subject" required [(ngModel)]="subject" name="subject">
         </div>
+        
         <div class="mb-3">
             <label for="courseDetails" class="form-label">Course Details</label>
-            <input type="text" class="form-control" id="courseDetails" placeholder="Enter Course Details" required>
+            <input type="text" class="form-control" id="courseDetails" placeholder="Enter Course Details" required [(ngModel)]="courseDetails" name="courseDetails">
         </div>
+        
         <div class="mb-3">
             <label for="courseIsFor" class="form-label">Course is For</label>
-            <input type="text" class="form-control" id="courseIsFor" placeholder="Enter Target Audience" required>
+            <input type="text" class="form-control" id="courseIsFor" placeholder="Enter Target Audience" required [(ngModel)]="courseIsFor" name="courseIsFor">
         </div>
+        
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" placeholder="Enter Price" required>
+            <input type="number" class="form-control" id="price" placeholder="Enter Price" required [(ngModel)]="price" name="price">
         </div>
+        
         <div class="mb-3">
             <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control" id="city" placeholder="Enter City" required>
+            <input type="text" class="form-control" id="city" placeholder="Enter City" required [(ngModel)]="city" name="city">
         </div>
+        
         <div class="mb-3">
             <label for="educationLevel" class="form-label">Education Level</label>
-            <select class="form-select" id="educationLevel" required>
+            <select class="form-select" id="educationLevel" required [(ngModel)]="educationLevel" name="educationLevel">
                 <option selected disabled class="bg-white">Select Education Level</option>
                 <option class="bg-white" value="PRIMARY_SCHOOL">Primary School</option>
                 <option class="bg-white" value="MIDDLE_SCHOOL">Middle School</option>
@@ -37,43 +40,41 @@
                 <option class="bg-white" value="PROFESSIONAL_QUALIFICATION">Professional Qualification</option>
             </select>
         </div>
+        
         <div class="mb-3">
             <label for="type" class="form-label">Course Type</label>
-            <select class="form-select" id="type" required>
+            <select class="form-select" id="type" required [(ngModel)]="type" name="type">
                 <option selected disabled class="bg-white">Select Course Type</option>
                 <option class="bg-white" value="In_Person">In Person</option>
                 <option class="bg-white" value="Online">Online</option>
             </select>
         </div>
+        
         <div class="mb-3">
             <label for="maxStudents" class="form-label">Maximum Students</label>
-            <input type="number" class="form-control" id="maxStudents" placeholder="Enter Maximum Students" required>
+            <input type="number" class="form-control" id="maxStudents" placeholder="Enter Maximum Students" required [(ngModel)]="maxStudents" name="maxStudents">
         </div>
+        
         <div class="mb-3">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="programDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Select Programs
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="programDropdown">
-                    <li class="bg-white">
-                        <input class="form-check-input me-2 ms-2" type="checkbox" value="1" id="program1">
-                        <label class="form-check-label bg-white" for="program1">Program 1</label>
-                    </li>
-                    <li class="bg-white">
-                        <input class="form-check-input me-2 ms-2" type="checkbox" value="2" id="program2">
-                        <label class="form-check-label bg-white" for="program2">Program 2</label>
-                    </li>
-                    <li class="bg-white">
-                        <input class="form-check-input me-2 ms-2" type="checkbox" value="3" id="program3">
-                        <label class="form-check-label bg-white" for="program3">Program 3</label>
+                    <li *ngFor="let program of allPrograms" class="bg-white">
+                        <input class="form-check-input me-2 ms-2" type="checkbox" [value]="program.id" [id]="'program' + program.id" (change)="toggleProgram(program.id)" [checked]="programIds.includes(program.id)" name="programIds">
+                        <label class="form-check-label bg-white" [for]="'program' + program.id">{{ program.day }} {{ program.time}}</label>
                     </li>
                 </ul>
             </div>
         </div>
-
+        
+                
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
+
 
 <div class="d-flex justify-content-end bg-white mt-5">
     <button type="button" class="btn btn-primary mb-3" id="showFormBtn" (click)="toggleForm()">+ Add New Course</button>
@@ -97,7 +98,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center" *ngFor="let course of courses">
+            <tr class="text-center" *ngFor="let course of allCourses">
                 <td>{{ course.subject }}</td>
                 <td>{{ course.courseDetails }}</td>
                 <td>{{ course.courseIsFor }}</td>

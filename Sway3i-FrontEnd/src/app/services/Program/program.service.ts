@@ -9,7 +9,7 @@ import { ProgramResponseDTO } from 'src/app/dto/Program/responses/program-respon
   providedIn: 'root'
 })
 export class ProgramService {
-  private apiUrl = `${environment.api}/programs`;
+  private apiUrl = `${environment.api}programs`;
 
   constructor(private http: HttpClient) { }
 

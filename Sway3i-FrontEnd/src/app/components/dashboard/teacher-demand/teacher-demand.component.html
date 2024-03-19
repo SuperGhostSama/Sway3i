@@ -1,37 +1,32 @@
 <div class="" *ngIf="showForm">
 
-    <form class="border border-4 p-5 rounded-4">
-        
-        <div class="mb-3">
-            <label for="createdById" class="form-label">Created By ID</label>
-            <input type="number" class="form-control" id="createdById" name="createdById" required>
-          </div>
-
-        <div class="mb-3">
-          <label for="subject" class="form-label">Subject</label>
-          <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
-        </div>
-
-        <div class="mb-3">
-          <label for="educationLevel" class="form-label">Education Level</label>
-          <select class="form-select" id="educationLevel" name="educationLevel">
-            <option selected disabled class="bg-white">Select Education Level</option>
-            <option value="PRIMARY_SCHOOL" class="bg-white">Primary School</option>
-            <option value="MIDDLE_SCHOOL" class="bg-white">Middle School</option>
-            <option value="HIGH_SCHOOL" class="bg-white">High School</option>
-            <option value="BACHELOR_DEGREE" class="bg-white">Bachelor Degree</option>
-            <option value="MASTERS_DEGREE" class="bg-white">Masters Degree</option>
-            <option value="PHD_DEGREE" class="bg-white">PhD Degree</option>
-            <option value="PROFESSIONAL_QUALIFICATION" class="bg-white">Professional Qualification</option>
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter Description"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+  <form class="border border-4 p-5 rounded-4" (submit)="onSubmit()">
+    <div class="mb-3">
+      <label for="subject" class="form-label">Subject</label>
+      <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" [(ngModel)]="subject">
+    </div>
+  
+    <div class="mb-3">
+      <label for="educationLevel" class="form-label">Education Level</label>
+      <select class="form-select" id="educationLevel" name="educationLevel" [(ngModel)]="educationLevel">
+        <option selected disabled class="bg-white">Select Education Level</option>
+        <option value="PRIMARY_SCHOOL" class="bg-white">Primary School</option>
+        <option value="MIDDLE_SCHOOL" class="bg-white">Middle School</option>
+        <option value="HIGH_SCHOOL" class="bg-white">High School</option>
+        <option value="BACHELOR_DEGREE" class="bg-white">Bachelor Degree</option>
+        <option value="MASTERS_DEGREE" class="bg-white">Masters Degree</option>
+        <option value="PHD_DEGREE" class="bg-white">PhD Degree</option>
+        <option value="PROFESSIONAL_QUALIFICATION" class="bg-white">Professional Qualification</option>
+      </select>
+    </div>
+  
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter Description" [(ngModel)]="description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
 
 </div>
 
@@ -43,20 +38,19 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">Created By ID</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Education Level</th>
-            <th scope="col">Description</th>
+            <th scope="col" class="text-center">Subject</th>
+            <th scope="col" class="text-center">Education Level</th>
+            <th scope="col" class="text-center">Description</th>
+            <th scope="col" class="text-center">Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{ createdById }}</td>
-            <td>{{ subject }}</td>
-            <td>{{ educationLevel }}</td>
-            <td>{{ description }}</td>
+          <tr *ngFor="let demand of teacherDemands" class="text-center">
+            <td class="fw-semibold">{{ demand.subject }}</td>
+            <td>{{ demand.educationLevel }}</td>
+            <td>{{ demand.description }}</td>
+            <td class="fw-semibold">{{ demand.status }}</td>
           </tr>
-    
         </tbody>
     </table>
 </div>

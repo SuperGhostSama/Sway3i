@@ -36,4 +36,8 @@ export class TeacherDemandService {
   rejectTeacherDemand(id: number): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/${id}/reject`, null);
   }
+
+  getTeacherDemandsByEmail(email: string): Observable<TeacherDemandResponseDTO[]> {
+    return this.http.get<TeacherDemandResponseDTO[]>(`${this.apiUrl}?email=${email}`);
+  }
 }

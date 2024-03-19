@@ -80,44 +80,54 @@
 </div>
 
 
-<div class="mt-5 border border-2 rounded-3 bg-white p-5">
-    <table class="table">
+<div class="mt-5 border border-2 rounded-3 bg-white p-5" >
+    <table class="table" >
         <thead>
-          <tr class="text-center">
-            <th scope="col">Created By User ID</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Course</th>
-            <th scope="col">Course is For</th>
-            <th scope="col">Price</th>
-            <th scope="col">City</th>
-            <th scope="col">Education Level</th>
-            <th scope="col">Course Type</th>
-            <th scope="col">Maximum Students</th>
-            <th scope="col">Programs</th>
-            <th scope="col">Operations</th>
-
-          </tr>
+            <tr class="text-center">
+                <th scope="col">Subject</th>
+                <th scope="col">Course</th>
+                <th scope="col">Course is For</th>
+                <th scope="col">Price</th>
+                <th scope="col">City</th>
+                <th scope="col">Education Level</th>
+                <th scope="col">Course Type</th>
+                <th scope="col">Maximum Students</th>
+                <th scope="col">Programs</th>
+                <th scope="col">Operations</th>
+            </tr>
         </thead>
         <tbody>
-          <tr class="text-center">
-            
-            <td>{{ createdByUserId }}</td>
-            <td>{{ subject }}</td>
-            <td>{{ courseDetails }}</td>
-            <td>{{ courseIsFor }}</td>
-            <td>{{ price }}</td>
-            <td>{{ city }}</td>
-            <td>{{ educationLevel }}</td>
-            <td>{{ type }}</td>
-            <td>{{ maxStudents }}</td>
-            <td>{{ programs }}</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-warning me-2" >Update</button>
-                <button type="button" class="btn btn-danger" >Delete</button>
-            </td>
-          </tr>
-    
+            <tr class="text-center" *ngFor="let course of courses">
+                <td>{{ course.subject }}</td>
+                <td>{{ course.courseDetails }}</td>
+                <td>{{ course.courseIsFor }}</td>
+                <td>{{ course.price }} DH</td>
+                <td>{{ course.city }}</td>
+                <td>{{ course.educationLevel }}</td>
+                <td>{{ course.type }}</td>
+                <td>{{ course.maxStudents }}</td>
+                <td>
+                    <div class="dropdown bg-white">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Programs
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li *ngFor="let program of course.programs">
+                                <a class="dropdown-item bg-white" href="#">
+                                    Date: {{ program.date }} - Time: {{ program.time }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-warning me-2">Update</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
+
 

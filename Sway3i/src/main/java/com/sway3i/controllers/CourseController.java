@@ -35,8 +35,8 @@ public class CourseController {
     }
 
     @GetMapping("/byEmail")
-    public ResponseEntity<List<CourseResponseDTO>> getAllCoursesByEmail(@RequestParam String email) {
-        List<CourseResponseDTO> courses = courseService.getAllCoursesByEmail(email);
+    public ResponseEntity<List<CourseWithDetailsResponseDTO>> getAllCoursesByEmail(@RequestParam String email) {
+        List<CourseWithDetailsResponseDTO> courses = courseService.getAllCoursesByEmail(email);
         return ResponseEntity.ok(courses);
     }
 

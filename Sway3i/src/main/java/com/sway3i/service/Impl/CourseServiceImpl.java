@@ -50,15 +50,32 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<CourseResponseDTO> getAllCoursesByEmail(String email) {
+    public List<CourseWithDetailsResponseDTO> getAllCoursesByEmail(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
 
         List<Course> courses = courseRepository.findByCreatedBy(user);
         return courses.stream()
-                .map(this::convertToDTO)
+                .map(this::convertToDetailsDTO)
                 .collect(Collectors.toList());
     }
+
+//    private CourseWithDetailsResponseDTO convertToDTOWithDetails(Course course) {
+//        return CourseWithDetailsResponseDTO.builder()
+//                .id(course.getId())
+//                .createdAt(LocalDate.now())
+//                .createdByUser(convertToUserDTO(course.getCreatedBy()))
+//                .subject(course.getSubject())
+//                .courseDetails(course.getCourseDetails())
+//                .courseIsFor(course.getCourseIsFor())
+//                .price(course.getPrice())
+//                .city(course.getCity())
+//                .educationLevel(course.getEducationLevel().name())
+//                .type(course.getType().name())
+//                .maxStudents(course.getMaxStudents())
+//                .programs(convertToProgramDTOList(course.getPrograms()))
+//                .build();
+//    }
 
     @Override
     public CourseDetailsResponseDTO getCourseDetails(Long courseId) {

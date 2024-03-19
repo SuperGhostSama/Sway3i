@@ -9,7 +9,7 @@ import { RoleResponseDTO } from 'src/app/dto/Role/responses/role-response-DTO';
   providedIn: 'root'
 })
 export class RoleService {
-  private apiUrl = `${environment.api}/role`;
+  private apiUrl = `${environment.api}role`;
 
   constructor(private http: HttpClient) { }
 

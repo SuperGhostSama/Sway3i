@@ -9,7 +9,7 @@ import { CalculateDiscountedPriceResponseDTO } from 'src/app/dto/CoursePricing/r
   providedIn: 'root'
 })
 export class CoursePricingService {
-  private apiUrl = `${environment.api}/course-pricing`;
+  private apiUrl = `${environment.api}course-pricing`;
 
   constructor(private http: HttpClient) { }
 

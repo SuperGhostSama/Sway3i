@@ -5,17 +5,18 @@ import { environment } from 'src/environments/environment';
 import { CourseRequestDTO } from 'src/app/dto/Course/requests/course-request-DTO';
 import { CourseDetailsResponseDTO } from 'src/app/dto/Course/responses/course-details-reponse-DTO';
 import { CourseResponseDTO } from 'src/app/dto/Course/responses/course-reponse-DTO';
+import { CourseWithDetailsResponseDTO } from 'src/app/dto/Course/responses/course-with-details-response-DTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-  private apiUrl = `${environment.api}/courses`;
+  private apiUrl = `${environment.api}courses`;
 
   constructor(private http: HttpClient) { }
 
-  getAllCourses(): Observable<CourseResponseDTO[]> {
-    return this.http.get<CourseResponseDTO[]>(this.apiUrl);
+  getAllCourses(): Observable<CourseWithDetailsResponseDTO[]> {
+    return this.http.get<CourseWithDetailsResponseDTO[]>(`${this.apiUrl}/all`);
   }
 
   getCourseById(id: number): Observable<CourseResponseDTO> {

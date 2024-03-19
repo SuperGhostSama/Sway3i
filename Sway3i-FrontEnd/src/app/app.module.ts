@@ -24,7 +24,7 @@ import { CoursesCardsComponent } from './components/utils/courses-cards/courses-
 import { CoursesPricingComponent } from './components/pages/courses-pricing/courses-pricing.component';
 import { AboutCoursePageComponent } from './components/pages/about-course-page/about-course-page.component';
 import { TeacherDemandComponent } from './components/dashboard/teacher-demand/teacher-demand.component';
-import { CoursesComponent } from './components/dashboard/courses/courses.component';
+import { CoursesComponent } from './components/dashboard/all-courses/courses.component';
 import { RouterModule } from '@angular/router';
 import { FeesComponent } from './components/dashboard/fees/fees.component';
 import { ProgramComponent } from './components/dashboard/program/program.component';

@@ -16,4 +16,5 @@ export class CoursePricingService {
   calculateDiscountedPrices(request: CalculateDiscountedPriceRequestDTO): Observable<CalculateDiscountedPriceResponseDTO> {
     return this.http.post<CalculateDiscountedPriceResponseDTO>(`${this.apiUrl}/calculate-discounted-prices`, request);
   }
+  
 }

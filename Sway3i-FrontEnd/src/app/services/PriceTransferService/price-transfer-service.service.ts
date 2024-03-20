@@ -7,15 +7,23 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class PriceTransferServiceService {
 
   private priceSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private courseTypeSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor() { }
 
-  setPrice(price: number): void {
+  setPriceAndType(price: number, courseType: string): void {
     this.priceSubject.next(price);
+    this.courseTypeSubject.next(courseType);
   }
 
   getPrice(): Observable<number> {
     return this.priceSubject.asObservable();
   }
-  
+
+  getCourseType(): Observable<string> {
+    return this.courseTypeSubject.asObservable();
+  }
+
+
+
 }

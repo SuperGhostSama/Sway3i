@@ -46,12 +46,13 @@ export class AboutCoursePageComponent {
   }
 
   sendPrice(): void {
-    this.priceTransferService.setPrice(this.course.price);
+    this.priceTransferService.setPriceAndType(this.course.price, this.course.type);
   }
+  
 
   subscribeAndSendPrice() {
     this.sendPrice();
     
     this.router.navigate(['/courses-pricing']);
-}
+  }
 }

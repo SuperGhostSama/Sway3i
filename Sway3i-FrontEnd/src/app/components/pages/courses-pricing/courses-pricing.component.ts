@@ -14,6 +14,7 @@ export class CoursesPricingComponent {
 
   receivedPrice: number = 0;
   receivedCourseType: string = '';
+  discountedPrices: any = {};
 
   constructor(
     private router: Router,
@@ -51,8 +52,9 @@ export class CoursesPricingComponent {
     
     this.coursePricingService.calculateDiscountedPrices(request).subscribe(
       (response: any) => {
-        console.log('Discounted Price:', response.discountedPrices);
-        this.receivedPrice = response.discountedPrices;
+        
+        this.discountedPrices = response.discountedPrices;
+        console.log('the prices:', this.discountedPrices);
       },
       (error) => {
         console.error('Error calculating discounted price:', error);

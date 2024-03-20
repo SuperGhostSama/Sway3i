@@ -11,7 +11,8 @@ import { TeacherDemandService } from 'src/app/services/TeacherDemand/teacher-dem
   styleUrls: ['./teacher-demand.component.css']
 })
 export class TeacherDemandComponent implements OnInit{
-
+  teacherIsValid: string | null = localStorage.getItem('isValid');
+  
   teacherDemands: TeacherDemandResponseDTO[] = [];
   createdById: number | undefined;
   subject: string = '';

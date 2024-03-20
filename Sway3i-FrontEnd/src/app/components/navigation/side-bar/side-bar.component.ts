@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent {
   userRole: string | null = localStorage.getItem('role');
+  teacherIsValid: string | null = localStorage.getItem('isValid');
   userFullName : string | null = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
   constructor(private router: Router) {}
 

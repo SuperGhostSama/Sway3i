@@ -6,7 +6,9 @@ export const teacherGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   const role = localStorage.getItem('role');
-  if (role !== 'ROLE_TEACHER') {
+  const isValid = localStorage.getItem('isValid');
+
+  if (role !== 'ROLE_TEACHER' && isValid !== 'true') {
 
     router.navigate(['/']);
 

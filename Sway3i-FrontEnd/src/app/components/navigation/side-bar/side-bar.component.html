@@ -40,12 +40,14 @@
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">Courses</span> 
                 </a>
             </li>
-            <li class="bg-white" *ngIf="userRole === 'ROLE_TEACHER'">
+
+            <li class="bg-white" *ngIf="userRole === 'ROLE_TEACHER' && teacherIsValid === 'true'">
                 <a routerLink="/dashboard/my-courses" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
                     <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">My Courses</span> 
                 </a>
             </li>
+            
 
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_ADMIN'">

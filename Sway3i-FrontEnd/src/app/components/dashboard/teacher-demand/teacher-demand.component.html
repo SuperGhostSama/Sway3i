@@ -30,7 +30,7 @@
 
 </div>
 
-<div class="d-flex justify-content-end bg-white mt-5">
+<div class="d-flex justify-content-end bg-white mt-5" *ngIf="teacherIsValid === 'false'">
   <button type="button" class="btn btn-primary mb-3" id="showFormBtn" [disabled]="isDemandAccepted()" (click)="toggleForm()">+ Make a new demand</button>
 </div>
 

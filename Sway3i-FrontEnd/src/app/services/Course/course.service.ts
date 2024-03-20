@@ -19,8 +19,8 @@ export class CourseService {
     return this.http.get<CourseWithDetailsResponseDTO[]>(`${this.apiUrl}/all`);
   }
 
-  getCourseById(id: number): Observable<CourseResponseDTO> {
-    return this.http.get<CourseResponseDTO>(`${this.apiUrl}/${id}`);
+  getCourseById(id: number): Observable<CourseWithDetailsResponseDTO> {
+    return this.http.get<CourseWithDetailsResponseDTO>(`${this.apiUrl}/${id}`);
   }
 
   getAllCoursesByEmail(email: string): Observable<CourseWithDetailsResponseDTO[]> {

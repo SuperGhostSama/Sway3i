@@ -32,4 +32,6 @@ export class CoursesCardsComponent implements OnInit{
       }
     );
   }
+
+  
 }

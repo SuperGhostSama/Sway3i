@@ -1,7 +1,7 @@
 <section class="d-flex justify-content-center pt-5">
     <div class="pt-4 ps-4 pe-4 w-75 border border-0 rounded-5" style="background-color: #EFEBF5;" >
         <span style="background-color: #EFEBF5;">Home | Mentor | </span>
-        <span style="background-color: #EFEBF5;"><a href="" style="background-color: #EFEBF5;">SalahEddine Hanaoui</a></span>
+        <span style="background-color: #EFEBF5;"><a href="" style="background-color: #EFEBF5;">{{ course.createdByUser.firstName }} {{ course.createdByUser.lastName}} </a></span>
 
         <div class="d-flex align-items-center justify-content-center" style="background-color: #EFEBF5;" >
             <div class="text-center" style="background-color: #EFEBF5;"  >
@@ -30,8 +30,19 @@
             width: fit-content;
             "
         >
-            <h2 class="fw-bold">SalahEddine Hanaoui</h2>
-            <span class="fw-semibold">Math & Physics</span>
+            <h2 class="fw-bold">{{ course.createdByUser.firstName }} {{ course.createdByUser.lastName}}</h2>
+            
+            <span class="fw-semibold">{{ course.subject }} For 
+                {{ course.educationLevel === 'PRIMARY_SCHOOL' ? 'Primary School' :
+                   (course.educationLevel === 'MIDDLE_SCHOOL' ? 'Middle School' :
+                   (course.educationLevel === 'HIGH_SCHOOL' ? 'High School' :
+                   (course.educationLevel === 'BACHELOR_DEGREE' ? "Bachelor's Degree" :
+                   (course.educationLevel === 'MASTERS_DEGREE' ? "Master's Degree" :
+                   (course.educationLevel === 'PHD_DEGREE' ? 'PhD Degree' :
+                   (course.educationLevel === 'PROFESSIONAL_QUALIFICATION' ? 'Professional Qualification' :
+                   course.educationLevel)))))) }}
+            </span>
+            
         </div>
     
 </div>
@@ -99,11 +110,11 @@
     <div class="p-5" style="
         position: relative;
         top: -685px;">
-        <h3 class="text-center fw-bolder">The Course Title</h3>
+        <h3 class="text-center fw-bolder">{{ course.courseName }}</h3>
     </div>
 
     <!-- Before Payment is completed -->
-    <section style="height: 46rem;">
+    <section style="height: 47rem;">
 
         <!-- The Card  -->
         <div class="container pt-4" 
@@ -117,28 +128,52 @@
               <div class="card-body bg-white">
     
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Price </span>
-                    <span class="bg-white fw-bolder">200 MAD</span>
-                </div>
-    
-                <div class="d-flex justify-content-between bg-white p-3 mb-4">
                     <span class="bg-white fw-bolder">Instructor </span>
-                    <span class="bg-white fw-bolder">SalahEddine Hanaoui</span>
+                    <span class="bg-white fw-bolder">{{ course.createdByUser.firstName }} {{ course.createdByUser.lastName }}</span>
                 </div>
     
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Lorem ipsum </span>
-                    <span class="bg-white fw-bolder">Lorem ipsum </span>
+                    <span class="bg-white fw-bolder">Education Level </span>
+                    <span class="bg-white fw-bolder">{{ course.educationLevel }} </span>
+                </div>
+    
+                <div class="d-flex justify-content-between bg-white p-3 mb-4">
+                    <span class="bg-white fw-bolder">City </span>
+                    <span class="bg-white fw-bolder">{{ course.city }} </span>
+                </div>
+    
+                <div class="d-flex justify-content-between bg-white p-3 mb-4">
+                    <span class="bg-white fw-bolder">Max Students </span>
+                    <span class="bg-white fw-bolder">{{ course.maxStudents }} </span>
                 </div>
                 
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Lorem ipsum </span>
-                    <span class="bg-white fw-bolder">Lorem ipsum </span>
+                    <span class="bg-white fw-bolder">Program </span>
+                    <span class="bg-white fw-bolder">
+                        <div class="dropdown bg-white">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Programs
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let program of course.programs">
+                                    <a class="dropdown-item bg-white" href="#">
+                                        Date: {{ program.date }} - Time: {{ program.time }}
+                                    </a>
+                                </li>
+                            </ul>
+                          </div>
+                    </span>
                 </div>
                 
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Access </span>
-                    <span class="bg-white fw-bolder">Remote | InPerson </span>
+                    <span class="bg-white fw-bolder">Access</span>
+                    <span class="bg-white fw-bolder">{{ course.type === 'In_Person' ? 'IN PERSON' : (course.type === 'Online' ? 'ONLINE' : course.type) }}</span>
+                </div>
+                
+                
+                <div class="d-flex justify-content-between bg-white p-3 mb-4">
+                    <span class="bg-white fw-bolder">Price </span>
+                    <span class="bg-white fw-bolder">{{ course.price }} MAD</span>
                 </div>
     
               </div>
@@ -154,17 +189,17 @@
     
             <div class="w-50 p-5" style="position: relative;
             left: 204px;
-            top: -1144px;">
+            top: -1349px;">
                 <h3 class="fw-bold">Course Details</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
+                <p>{{ course.courseDetails }}</p>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
             </div>
         
             <div class="w-50 p-5" style="position: relative;
             left: 204px;
-            top: -1144px;">
+            top: -1329px;">
                 <h3 class="fw-bold">Who this course is for?</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
+                <p>{{ course.courseIsFor }}</p>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
             </div>
     
@@ -177,7 +212,7 @@
 
 <!-- After payement is completed -->
 
-<section style="height: 40rem;">
+<section style="height: 20rem;">
 
         <!-- The Card  -->
         <div class="container pt-4"
@@ -192,43 +227,52 @@
               <div class="card-body bg-white">
     
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Sunday </span>
-                    <span class="bg-white fw-bolder">200 MAD</span>
+                    <span class="bg-white fw-bolder">Instructor </span>
+                    <span class="bg-white fw-bolder">{{ course.createdByUser.firstName }} {{ course.createdByUser.lastName }}</span>
                 </div>
     
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Monday </span>
-                    <span class="bg-white fw-bolder">SalahEddine Hanaoui</span>
+                    <span class="bg-white fw-bolder">Education Level </span>
+                    <span class="bg-white fw-bolder">{{ course.educationLevel }} </span>
                 </div>
     
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Tuesday</span>
-                    <span class="bg-white fw-bolder">Lorem ipsum </span>
-                </div>
-                
-                <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Wednesday </span>
-                    <span class="bg-white fw-bolder">Lorem ipsum </span>
-                </div>
-                
-                <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Thursday </span>
-                    <span class="bg-white fw-bolder">Remote | InPerson </span>
-                </div>
-                
-                <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Friday </span>
-                    <span class="bg-white fw-bolder">Remote | InPerson </span>
-                </div>
-                
-                <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Saturday </span>
-                    <span class="bg-white fw-bolder">Remote | InPerson </span>
+                    <span class="bg-white fw-bolder">City </span>
+                    <span class="bg-white fw-bolder">{{ course.city }} </span>
                 </div>
 
                 <div class="d-flex justify-content-between bg-white p-3 mb-4">
-                    <span class="bg-white fw-bolder">Link | Adress </span>
-                    <span class="bg-white fw-bolder">Lorem ipsum dolor sit amet. </span>
+                    <span class="bg-white fw-bolder">Program </span>
+                    <span class="bg-white fw-bolder">
+                        <div class="dropdown bg-white">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Programs
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let program of course.programs">
+                                    <a class="dropdown-item bg-white" href="#">
+                                        Date: {{ program.date }} - Time: {{ program.time }}
+                                    </a>
+                                </li>
+                            </ul>
+                          </div>
+                    </span>
+                </div>
+    
+                <div class="d-flex justify-content-between bg-white p-3 mb-4">
+                    <span class="bg-white fw-bolder">Access</span>
+                    <span class="bg-white fw-bolder">{{ course.type === 'In_Person' ? 'IN PERSON' : (course.type === 'Online' ? 'ONLINE' : course.type) }}</span>
+                </div>
+                
+
+                <div *ngIf="course.type !== 'In_Person'" class="d-flex justify-content-between bg-white p-3 mb-4">
+                    <span class="bg-white fw-bolder">Link</span>
+                    <span class="bg-white fw-bolder">{{ course.link }}</span>
+                </div>
+                
+                <div *ngIf="course.type === 'In_Person'" class="d-flex justify-content-between bg-white p-3 mb-4">
+                    <span class="bg-white fw-bolder">Address</span>
+                    <span class="bg-white fw-bolder">{{ course.address }}</span>
                 </div>
     
               </div>
@@ -246,7 +290,7 @@
             left: 204px;
             top: -1144px;">
                 <h3 class="fw-bold">Course Details</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
+                <p>{{ course.courseDetails }}</p>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
             </div>
         
@@ -254,7 +298,7 @@
             left: 204px;
             top: -1144px;">
                 <h3 class="fw-bold">Who this course is for?</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
+                <p>{{ course.courseIsFor }}</p>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
             </div>
     

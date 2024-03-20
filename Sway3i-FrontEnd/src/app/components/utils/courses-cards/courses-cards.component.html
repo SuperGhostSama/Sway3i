@@ -5,7 +5,7 @@
         <div class="card-body bg-white rounded-3">
           <h5 class="card-title bg-white">{{ course.courseName }}</h5>
           <p class="card-text bg-white">{{ course.courseDetails }}.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
+          <a href="#" class="" id="btn-purple" [routerLink]="['/about-course', course.id]" >Class Details</a>
         </div>
     </div>
 

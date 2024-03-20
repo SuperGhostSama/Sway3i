@@ -20,6 +20,9 @@ import { ProgramComponent } from './components/dashboard/program/program.compone
 import { UsersComponent } from './components/dashboard/users/users.component';
 import { AllTeacherDemandsComponent } from './components/dashboard/all-teacher-demands/all-teacher-demands.component';
 import { MyCoursesComponent } from './components/dashboard/my-courses/my-courses.component';
+import { adminGuard } from './guard/admin/admin.guard';
+import { teacherGuard } from './guard/teacher/teacher.guard';
+import { loggedInGuard } from './guard/logged-in/logged-in.guard';
 
 const routes: Routes = [
   {
@@ -40,21 +43,22 @@ const routes: Routes = [
         ]},
       { path: 'courses-pricing', component: CoursesPricingComponent },
       { path: 'about-course/:id', component: AboutCoursePageComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent, canActivate: [loggedInGuard]},
+      { path: 'register', component: RegisterComponent, canActivate: [loggedInGuard] },
     ],
   },
   {
     path: 'dashboard',
     component: DasboardLayoutComponent,
+    canActivate: [authGuard],
     children: [
-      { path: 'teacher-demand', component: TeacherDemandComponent },
-      { path: 'all-teachers-demands', component: AllTeacherDemandsComponent },
-      { path: 'courses', component: CoursesComponent },
-      { path: 'my-courses', component: MyCoursesComponent },
-      { path: 'fees', component: FeesComponent },
-      { path: 'program', component: ProgramComponent },
-      { path: 'users', component: UsersComponent },
+      { path: 'teacher-demand', component: TeacherDemandComponent, canActivate: [teacherGuard] },
+      { path: 'all-teachers-demands', component: AllTeacherDemandsComponent, canActivate: [adminGuard] },
+      { path: 'courses', component: CoursesComponent, canActivate: [adminGuard] },
+      { path: 'my-courses', component: MyCoursesComponent, canActivate: [teacherGuard] },
+      { path: 'fees', component: FeesComponent, canActivate: [adminGuard] },
+      { path: 'program', component: ProgramComponent, canActivate: [adminGuard] },
+      { path: 'users', component: UsersComponent, canActivate: [adminGuard]},
     ],
   }
 ]; 

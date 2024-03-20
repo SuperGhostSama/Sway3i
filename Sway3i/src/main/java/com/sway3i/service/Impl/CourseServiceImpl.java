@@ -44,12 +44,6 @@ public class CourseServiceImpl implements CourseService {
 //    }
 
     @Override
-    public Optional<CourseResponseDTO> getCourseById(Long id) {
-        return courseRepository.findById(id)
-                .map(this::convertToDTO);
-    }
-
-    @Override
     public List<CourseWithDetailsResponseDTO> getAllCoursesByEmail(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
@@ -167,6 +161,13 @@ public class CourseServiceImpl implements CourseService {
                 .map(this::convertToDetailsDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Optional<CourseWithDetailsResponseDTO> getCourseById(Long id) {
+        return courseRepository.findById(id)
+                .map(this::convertToDetailsDTO);
+    }
+
 
     private CourseWithDetailsResponseDTO convertToDetailsDTO(Course course) {
         return CourseWithDetailsResponseDTO.builder()

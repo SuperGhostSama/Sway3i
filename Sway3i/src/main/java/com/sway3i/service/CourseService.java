@@ -13,8 +13,7 @@ public interface CourseService {
 
 //    List<CourseResponseDTO> getAllCourses();
 
-    Optional<CourseResponseDTO> getCourseById(Long id);
-
+    Optional<CourseWithDetailsResponseDTO> getCourseById(Long id);
     CourseResponseDTO createCourse(CourseRequestDTO courseRequest);
 
     CourseResponseDTO updateCourse(Long id, CourseRequestDTO updatedCourseRequest);

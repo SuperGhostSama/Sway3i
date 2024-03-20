@@ -27,12 +27,7 @@ public class CourseController {
 //        return new ResponseEntity<>(courses, HttpStatus.OK);
 //    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CourseResponseDTO> getCourseById(@PathVariable Long id) {
-        Optional<CourseResponseDTO> course = courseService.getCourseById(id);
-        return course.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
+
 
     @GetMapping("/byEmail")
     public ResponseEntity<List<CourseWithDetailsResponseDTO>> getAllCoursesByEmail(@RequestParam String email) {
@@ -68,5 +63,12 @@ public class CourseController {
     @GetMapping("/all")
     public List<CourseWithDetailsResponseDTO> getAllCourses() {
         return courseService.getAllCourses();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CourseWithDetailsResponseDTO> getCourseById(@PathVariable Long id) {
+        Optional<CourseWithDetailsResponseDTO> course = courseService.getCourseById(id);
+        return course.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

@@ -86,26 +86,26 @@
     <div class="mt-4">
 
         <div class="d-flex justify-content-center">
-            <button id="button" class="fw-bold">PrimarySchool</button>
-            <button id="button" class="ms-3 fw-bold">MiddleSchool</button>
-            <button id="button" class="ms-3 fw-bold">HighSchool</button>
-            <button id="button" class="ms-3 fw-bold">College</button>
-        </div>
-
-        <div id="cards" class="ps-5 pe-5 d-flex flex-wrap justify-content-center">
+            <button (click)="filterCourses('LATEST')" id="button" class="fw-bold">Show latest</button>
+            <button (click)="filterCourses('PRIMARY_SCHOOL')" id="button" class="ms-3 fw-bold">Primary School</button>
+            <button (click)="filterCourses('MIDDLE_SCHOOL')" id="button" class="ms-3 fw-bold">Middle School</button>
+            <button (click)="filterCourses('HIGH_SCHOOL')" id="button" class="ms-3 fw-bold">High School</button>
+            <button (click)="filterCourses('MASTERS_DEGREE')" id="button" class="ms-3 fw-bold">Masters Degree</button>
+            <button (click)="filterCourses('PHD_DEGREE')" id="button" class="ms-3 fw-bold">Phd Degree</button>
             
-            <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;" *ngFor="let course of latestCourses.slice(0, 5)">
+        </div>
+        
+        <div id="cards" class="ps-5 pe-5 d-flex flex-wrap justify-content-center">
+            <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;" *ngFor="let course of (filteredCourses.length > 0 ? filteredCourses : latestCourses).slice(0, 5)">
                 <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
                 <div class="card-body bg-white rounded-3">
-                  <h5 class="card-title bg-white">{{ course.courseName }}</h5>
-                  <p class="card-text bg-white text-truncate">{{ course.courseDetails }}</p>
-                  <a href="#" class="" id="btn-purple">Class Details</a>
+                    <h5 class="card-title bg-white">{{ course.courseName }}</h5>
+                    <p class="card-text bg-white text-truncate">{{ course.courseDetails }}</p>
+                    <a href="#" class="" id="btn-purple">Class Details</a>
                 </div>
             </div>
-            
-
-
         </div>
+        
 
         <div class="d-flex justify-content-center pt-5 pb-4">
             <a href="#" class="" id="btn-purple-secondary" routerLink="courses-list">Visit More Classes</a>

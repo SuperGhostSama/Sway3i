@@ -31,7 +31,7 @@
             "
         >
             <h2 class="fw-bold">{{ course.createdByUser.firstName }} {{ course.createdByUser.lastName}}</h2>
-            
+
             <span class="fw-semibold">{{ course.subject }} For 
                 {{ course.educationLevel === 'PRIMARY_SCHOOL' ? 'Primary School' :
                    (course.educationLevel === 'MIDDLE_SCHOOL' ? 'Middle School' :
@@ -178,9 +178,14 @@
     
               </div>
     
-              <div class="">
-                <button id="btn-purple" class="container-fluid">Subscribe Now</button>
-            </div>
+                <div class="">
+                    <button 
+                        id="btn-purple" 
+                        class="container-fluid"
+                        (click)="subscribeAndSendPrice()">
+                        Subscribe Now
+                    </button>
+                </div>
     
             </div>
     

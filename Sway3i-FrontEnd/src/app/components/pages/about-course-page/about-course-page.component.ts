@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CourseWithDetailsResponseDTO } from 'src/app/dto/Course/responses/course-with-details-response-DTO';
 import { CourseService } from 'src/app/services/Course/course.service';
+import { PriceTransferServiceService } from 'src/app/services/PriceTransferService/price-transfer-service.service';
 
 @Component({
   selector: 'app-about-course-page',
@@ -16,7 +17,9 @@ export class AboutCoursePageComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private priceTransferService: PriceTransferServiceService,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
@@ -41,4 +44,14 @@ export class AboutCoursePageComponent {
       );
     }
   }
+
+  sendPrice(): void {
+    this.priceTransferService.setPrice(this.course.price);
+  }
+
+  subscribeAndSendPrice() {
+    this.sendPrice();
+    
+    this.router.navigate(['/courses-pricing']);
+}
 }

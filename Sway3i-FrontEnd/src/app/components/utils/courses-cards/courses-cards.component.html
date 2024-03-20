@@ -4,7 +4,7 @@
         <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
         <div class="card-body bg-white rounded-3">
           <h5 class="card-title bg-white">{{ course.courseName }}</h5>
-          <p class="card-text bg-white">{{ course.courseDetails }}.</p>
+          <p class="card-text bg-white text-truncate">{{ course.courseDetails }}.</p>
           <a href="#" class="" id="btn-purple" [routerLink]="['/about-course', course.id]" >Class Details</a>
         </div>
     </div>

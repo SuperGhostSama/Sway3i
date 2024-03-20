@@ -31,6 +31,7 @@ import { ProgramComponent } from './components/dashboard/program/program.compone
 import { UsersComponent } from './components/dashboard/users/users.component';
 import { AllTeacherDemandsComponent } from './components/dashboard/all-teacher-demands/all-teacher-demands.component';
 import { MyCoursesComponent } from './components/dashboard/my-courses/my-courses.component';
+import { InventoryComponent } from './components/dashboard/inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MyCoursesComponent } from './components/dashboard/my-courses/my-courses
     ProgramComponent,
     UsersComponent,
     AllTeacherDemandsComponent,
-    MyCoursesComponent
+    MyCoursesComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,

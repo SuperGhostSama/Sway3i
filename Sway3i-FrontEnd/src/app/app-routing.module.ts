@@ -23,6 +23,7 @@ import { MyCoursesComponent } from './components/dashboard/my-courses/my-courses
 import { adminGuard } from './guard/admin/admin.guard';
 import { teacherGuard } from './guard/teacher/teacher.guard';
 import { loggedInGuard } from './guard/logged-in/logged-in.guard';
+import { InventoryComponent } from './components/dashboard/inventory/inventory.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,7 @@ const routes: Routes = [
       { path: 'fees', component: FeesComponent, canActivate: [adminGuard] },
       { path: 'program', component: ProgramComponent, canActivate: [adminGuard] },
       { path: 'users', component: UsersComponent, canActivate: [adminGuard]},
+      { path: 'inventory', component: InventoryComponent, canActivate: [authGuard]},
     ],
   }
 ]; 

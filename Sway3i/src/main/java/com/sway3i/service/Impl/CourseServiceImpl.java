@@ -60,23 +60,6 @@ public class CourseServiceImpl implements CourseService {
                 .collect(Collectors.toList());
     }
 
-//    private CourseWithDetailsResponseDTO convertToDTOWithDetails(Course course) {
-//        return CourseWithDetailsResponseDTO.builder()
-//                .id(course.getId())
-//                .createdAt(LocalDate.now())
-//                .createdByUser(convertToUserDTO(course.getCreatedBy()))
-//                .subject(course.getSubject())
-//                .courseDetails(course.getCourseDetails())
-//                .courseIsFor(course.getCourseIsFor())
-//                .price(course.getPrice())
-//                .city(course.getCity())
-//                .educationLevel(course.getEducationLevel().name())
-//                .type(course.getType().name())
-//                .maxStudents(course.getMaxStudents())
-//                .programs(convertToProgramDTOList(course.getPrograms()))
-//                .build();
-//    }
-
     @Override
     public CourseDetailsResponseDTO getCourseDetails(Long courseId) {
         Course course = courseRepository.findById(courseId)
@@ -134,6 +117,7 @@ public class CourseServiceImpl implements CourseService {
                 .createdAt(LocalDate.now())
                 .createdBy(userRepository.getUserById(courseRequest.getCreatedByUserId()))
                 .subject(courseRequest.getSubject())
+                .courseName(courseRequest.getCourseName())
                 .courseDetails(courseRequest.getCourseDetails())
                 .courseIsFor(courseRequest.getCourseIsFor())
                 .price(courseRequest.getPrice())
@@ -143,6 +127,8 @@ public class CourseServiceImpl implements CourseService {
                 .maxStudents(courseRequest.getMaxStudents())
                 .programs(programs)
                 .fees(fixedFees)
+                .link(courseRequest.getLink())
+                .address(courseRequest.getAddress())
                 .build();
 
         return course;
@@ -154,6 +140,7 @@ public class CourseServiceImpl implements CourseService {
                 .createdAt(LocalDate.now())
                 .createdByUserId(userRepository.getUserById(course.getCreatedBy().getId()).getId())
                 .subject(course.getSubject())
+                .courseName(course.getCourseName())
                 .courseDetails(course.getCourseDetails())
                 .courseIsFor(course.getCourseIsFor())
                 .price(course.getPrice())
@@ -164,6 +151,8 @@ public class CourseServiceImpl implements CourseService {
                 .programIds(course.getPrograms().stream()
                         .map(Program::getId)
                         .collect(Collectors.toList()))
+                .link(course.getLink())
+                .address(course.getAddress())
                 .build();
     }
 
@@ -184,6 +173,7 @@ public class CourseServiceImpl implements CourseService {
                 .id(course.getId())
                 .createdAt(course.getCreatedAt())
                 .createdByUser(convertToUserDTO(course.getCreatedBy()))
+                .courseName(course.getCourseName())
                 .subject(course.getSubject())
                 .courseDetails(course.getCourseDetails())
                 .courseIsFor(course.getCourseIsFor())
@@ -193,6 +183,8 @@ public class CourseServiceImpl implements CourseService {
                 .type(course.getType().name())
                 .maxStudents(course.getMaxStudents())
                 .programs(convertToProgramDTOList(course.getPrograms()))
+                .link(course.getLink())
+                .address(course.getAddress())
                 .build();
     }
 

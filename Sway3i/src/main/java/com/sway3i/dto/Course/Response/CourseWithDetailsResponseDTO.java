@@ -20,6 +20,7 @@ public class CourseWithDetailsResponseDTO {
     private Long id;
     private LocalDate createdAt;
     private UserDTO createdByUser;
+    private String courseName;
     private String subject;
     private String courseDetails;
     private String courseIsFor;
@@ -29,5 +30,8 @@ public class CourseWithDetailsResponseDTO {
     private String type;
     private int maxStudents;
     private List<ProgramDTO> programs;
+
+    private String link;
+    private String address;
 
 }

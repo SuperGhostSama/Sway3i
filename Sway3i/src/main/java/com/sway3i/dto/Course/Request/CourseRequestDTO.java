@@ -18,6 +18,7 @@ import java.util.List;
 public class CourseRequestDTO {
     private Long createdByUserId;
     private String subject;
+    private String courseName;
     private String courseDetails;
     private String courseIsFor;
     private long price;
@@ -27,4 +28,7 @@ public class CourseRequestDTO {
     private int maxStudents;
     private List<Long> programIds;
 
+    private String link;
+
+    private String address;
 }

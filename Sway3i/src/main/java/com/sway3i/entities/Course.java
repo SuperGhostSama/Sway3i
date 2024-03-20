@@ -28,6 +28,7 @@ public class Course {
     private User createdBy;
 
     private String subject;
+    private String courseName;
     private String courseDetails;
     private String courseIsFor;
     private long price;

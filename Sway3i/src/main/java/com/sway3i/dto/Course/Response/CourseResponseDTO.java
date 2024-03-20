@@ -18,6 +18,7 @@ public class CourseResponseDTO {
     private LocalDate createdAt;
     private Long createdByUserId;
     private String subject;
+    private String courseName;
     private String courseDetails;
     private String courseIsFor;
     private long price;
@@ -26,4 +27,6 @@ public class CourseResponseDTO {
     private String type;
     private int maxStudents;
     private List<Long> programIds;
+    private String link;
+    private String address;
 }

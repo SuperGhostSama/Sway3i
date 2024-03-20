@@ -26,12 +26,10 @@ export class CoursesPricingComponent {
   ngOnInit(): void {
     this.priceTransferService.getPrice().subscribe(price => {
       this.receivedPrice = price;
-      console.log('Received Price:', this.receivedPrice);
     });
 
     this.priceTransferService.getCourseType().subscribe(courseType => {
       this.receivedCourseType = courseType;
-      console.log('Received Course Type:', this.receivedCourseType);
     });
 
     if (this.receivedPrice === 0) {
@@ -48,13 +46,11 @@ export class CoursesPricingComponent {
       courseType: this.receivedCourseType
     };
 
-    console.log('Request:', request);
     
     this.coursePricingService.calculateDiscountedPrices(request).subscribe(
       (response: any) => {
         
         this.discountedPrices = response.discountedPrices;
-        console.log('the prices:', this.discountedPrices);
       },
       (error) => {
         console.error('Error calculating discounted price:', error);

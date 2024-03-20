@@ -1,75 +1,21 @@
 <div id="cards" class="ps-5 pe-5 d-flex flex-wrap justify-content-center">
             
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
+    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;" *ngFor="let course of courses">
         <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
         <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
-        </div>
-    </div>
-    
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
-        <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
-        <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
-        </div>
-    </div>
-    
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
-        <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
-        <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title bg-white">{{ course.courseName }}</h5>
+          <p class="card-text bg-white">{{ course.courseDetails }}.</p>
           <a href="#" class="" id="btn-purple">Class Details</a>
         </div>
     </div>
 
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
-        <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
-        <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
-        </div>
-    </div>
 
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
-        <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
-        <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
-        </div>
-    </div>
 
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
-        <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
-        <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
-        </div>
-    </div>
 
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
-        <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
-        <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
-        </div>
-    </div>
 
-    <div class="card me-5 mt-5 text-center border-0" style="width: 19rem;">
-        <img src="https://media.discordapp.net/attachments/1016377773373259796/1202172423517253642/amazing_asiatic_landscape_art-wallpaper-1920x1200.jpg?ex=65f16751&is=65def251&hm=225dd6f7a717d158994a397dc62a08aab09e4a03dfe7fba8e4372363b9ccc371&=&format=webp&width=1074&height=671" class="card-img-top" alt="card img">
-        <div class="card-body bg-white rounded-3">
-          <h5 class="card-title bg-white">Card title</h5>
-          <p class="card-text bg-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="" id="btn-purple">Class Details</a>
-        </div>
-    </div>
+
+
+
+
 
 </div>

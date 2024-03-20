@@ -42,4 +42,9 @@ export class CourseService {
   deleteCourse(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getAllLatestCourses(): Observable<CourseWithDetailsResponseDTO[]> {
+    return this.http.get<CourseWithDetailsResponseDTO[]>(`${this.apiUrl}/latest`);
+  }
+  
 }

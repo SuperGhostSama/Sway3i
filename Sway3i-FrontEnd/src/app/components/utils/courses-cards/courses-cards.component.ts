@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/services/Notification/notification.
 export class CoursesCardsComponent implements OnInit{
 
   courses: CourseWithDetailsResponseDTO[] = [];
+  filteredCourses: CourseWithDetailsResponseDTO[] = [];
 
   constructor(
     private courseService: CourseService,
@@ -33,5 +34,8 @@ export class CoursesCardsComponent implements OnInit{
     );
   }
 
+  filterCourses(educationLevel: string): void {
+    this.filteredCourses = this.courses.filter(course => course.educationLevel === educationLevel);
+  }
   
 }

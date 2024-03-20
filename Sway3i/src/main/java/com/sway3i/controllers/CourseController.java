@@ -71,4 +71,10 @@ public class CourseController {
         return course.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/latest")
+    public ResponseEntity<List<CourseWithDetailsResponseDTO>> getAllLatestCourses() {
+        List<CourseWithDetailsResponseDTO> latestCourses = courseService.getAllLatestCourses();
+        return ResponseEntity.ok(latestCourses);
+    }
 }

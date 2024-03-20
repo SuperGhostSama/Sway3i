@@ -35,13 +35,13 @@ public class CourseServiceImpl implements CourseService {
     private final ProgramRepository programRepository;
     private final FeesRepository feesRepository;
 
-//    @Override
-//    public List<CourseResponseDTO> getAllCourses() {
-//        List<Course> courses = courseRepository.findAll();
-//        return courses.stream()
-//                .map(this::convertToDTO)
-//                .collect(Collectors.toList());
-//    }
+    @Override
+    public List<CourseWithDetailsResponseDTO> getAllLatestCourses() {
+        List<Course> latestCourses = courseRepository.find4LatestCourses();
+        return latestCourses.stream()
+                .map(this::convertToDetailsDTO)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public List<CourseWithDetailsResponseDTO> getAllCoursesByEmail(String email) {

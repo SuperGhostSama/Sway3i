@@ -11,8 +11,7 @@ import java.util.Optional;
 
 public interface CourseService {
 
-//    List<CourseResponseDTO> getAllCourses();
-
+    List<CourseWithDetailsResponseDTO> getAllLatestCourses();
     Optional<CourseWithDetailsResponseDTO> getCourseById(Long id);
     CourseResponseDTO createCourse(CourseRequestDTO courseRequest);
 

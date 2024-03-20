@@ -22,28 +22,28 @@
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_ADMIN'">
                 <a routerLink="/dashboard/all-teachers-demands" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
-                    <span class="ms-1 d-none d-sm-inline text-dark bg-white">Teacher Demands</span> 
+                    <i class="bi bi-card-checklist text-black me-1 bg-white"></i>
+                    <span class="ms-1 d-none d-sm-inline text-dark bg-white">All Teacher Demands</span> 
                 </a>
             </li>
             
             <li class="bg-white" *ngIf="userRole === 'ROLE_TEACHER'">
                 <a routerLink="/dashboard/teacher-demand" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
+                    <i class="bi bi-card-checklist text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">My Teacher Demands</span> 
                 </a>
             </li>
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_ADMIN'">
                 <a routerLink="/dashboard/courses" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
+                    <i class="bi bi-journal-text text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">Courses</span> 
                 </a>
             </li>
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_TEACHER' && teacherIsValid === 'true'">
                 <a routerLink="/dashboard/my-courses" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
+                    <i class="bi bi-journal-text text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">My Courses</span> 
                 </a>
             </li>
@@ -52,28 +52,28 @@
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_ADMIN'">
                 <a routerLink="/dashboard/fees" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
+                    <i class="bi bi-cash-coin text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">Fees</span> 
                 </a>
             </li>
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_ADMIN'">
                 <a routerLink="/dashboard/program" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
+                    <i class="bi bi-calendar2-plus text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">Program</span> 
                 </a>
             </li>
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_ADMIN'">
                 <a routerLink="/dashboard/users" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
+                    <i class="bi bi-calendar-week text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">Users Management</span> 
                 </a>
             </li>
 
             <li class="bg-white" *ngIf="userRole === 'ROLE_STUDENT'">
                 <a routerLink="/dashboard/inventory" routerLinkActive="active" class="nav-link px-0 align-middle bg-white">
-                    <i class="bi bi-door-open-fill text-black me-1 bg-white"></i>
+                    <i class="bi bi-journal-text text-black me-1 bg-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-dark bg-white">Inventory</span> 
                 </a>
             </li>

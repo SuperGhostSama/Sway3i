@@ -18,6 +18,11 @@ export class LoginComponent {
     private notificationService: NotificationService
     ) {}
 
+  ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
   onSubmit() {
     this.authService.authenticate(this.loginRequest).subscribe(
       (response) => {

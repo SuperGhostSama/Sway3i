@@ -9,6 +9,7 @@ export interface Course {
   createdAt: Date;
   createdBy: User;
   subject: string;
+  courseName: string;
   courseDetails: string;
   courseIsFor: string;
   price: number;

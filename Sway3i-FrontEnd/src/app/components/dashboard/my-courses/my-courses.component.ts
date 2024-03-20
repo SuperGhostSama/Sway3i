@@ -21,6 +21,7 @@ export class MyCoursesComponent {
   firstName!: string;
   lastName!: string;
   subject!: string;
+  courseName!: string;
   courseDetails!: string;
   courseIsFor!: string;
   price!: number;
@@ -29,6 +30,8 @@ export class MyCoursesComponent {
   type!: CourseType;
   maxStudents!: number;
   programIds: number[] = [];
+  link!: string;
+  address!: string;
   
   allPrograms!: ProgramResponseDTO[];
 
@@ -88,6 +91,7 @@ export class MyCoursesComponent {
     const courseRequest: CourseRequestDTO = {
       createdByUserId: localStorage.getItem('id') as unknown as number,
       subject: this.subject,
+      courseName: this.courseName,
       courseDetails: this.courseDetails,
       courseIsFor: this.courseIsFor,
       price: this.price,
@@ -95,7 +99,9 @@ export class MyCoursesComponent {
       educationLevel: this.educationLevel as EducationLevel, 
       type: this.type,
       maxStudents: this.maxStudents,
-      programIds: this.programIds 
+      programIds: this.programIds,
+      link: this.link,
+      address: this.address
     };
   
       

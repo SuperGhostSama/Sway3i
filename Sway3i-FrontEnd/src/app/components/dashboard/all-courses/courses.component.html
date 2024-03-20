@@ -4,6 +4,7 @@
             <tr class="text-center">
                 <th scope="col">Creator</th>
                 <th scope="col">Subject</th>
+                <th scope="col">Course Name</th>
                 <th scope="col">Course</th>
                 <th scope="col">Course is For</th>
                 <th scope="col">Price</th>
@@ -12,6 +13,8 @@
                 <th scope="col">Course Type</th>
                 <th scope="col">Maximum Students</th>
                 <th scope="col">Programs</th>
+                <th scope="col">Link</th>
+                <th scope="col">Address</th>
                 <th scope="col">Operations</th>
             </tr>
         </thead>
@@ -19,6 +22,7 @@
             <tr class="text-center" *ngFor="let course of courses">
                 <td class="fw-semibold">{{ course.createdByUser.firstName }} {{ course.createdByUser.lastName}}</td>
                 <td class="fw-semibold">{{ course.subject }}</td>
+                <td class="fw-semibold">{{ course.courseName }}</td>
                 <td class="fw-semibold">{{ course.courseDetails }}</td>
                 <td class="fw-semibold">{{ course.courseIsFor }}</td>
                 <td class="fw-semibold">{{ course.price }} DH</td>
@@ -41,6 +45,9 @@
                         </ul>
                       </div>
                 </td>
+                
+                <td class="fw-semibold">{{ course.link }}</td>
+                <td class="fw-semibold">{{ course.address }}</td>
                 <td class="text-center">
                     <button type="button" class="btn btn-danger fw-semibold" (click)="confirmDelete(course)">Delete</button>
                 </td>

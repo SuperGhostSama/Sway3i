@@ -3,6 +3,7 @@ export interface CourseResponseDTO {
     createdAt: string;
     createdByUserId: number;
     subject: string;
+    courseName: string;
     courseDetails: string;
     courseIsFor: string;
     price: number;
@@ -11,5 +12,7 @@ export interface CourseResponseDTO {
     type: string;
     maxStudents: number;
     programIds: number[];
+    link: string;
+    address: string;
   }
   

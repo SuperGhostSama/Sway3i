@@ -6,6 +6,7 @@ export interface CourseWithDetailsResponseDTO {
   createdAt: string; // Date
   createdByUser: UserDTO;
   subject: string;
+  courseName: string;
   courseDetails: string;
   courseIsFor: string;
   price: number;
@@ -14,4 +15,6 @@ export interface CourseWithDetailsResponseDTO {
   type: string;
   maxStudents: number;
   programs: ProgramDTO[];
+  link: string;
+  address: string;
 }

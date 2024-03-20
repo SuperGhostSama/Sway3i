@@ -4,6 +4,7 @@ import { EducationLevel } from "src/app/modal/enums/education-level-enum";
 export interface CourseRequestDTO {
   createdByUserId: number;
   subject: string;
+  courseName: string;
   courseDetails: string;
   courseIsFor: string;
   price: number;
@@ -12,4 +13,7 @@ export interface CourseRequestDTO {
   type: CourseType;
   maxStudents: number;
   programIds: number[];
+  link: string;
+  address: string;
+
 }

@@ -23,7 +23,8 @@ export class AboutCoursePageComponent {
     ) {}
 
   ngOnInit(): void {
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     this.fetchCourseDetails();
   }
   

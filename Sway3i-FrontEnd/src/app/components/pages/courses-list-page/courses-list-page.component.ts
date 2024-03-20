@@ -11,6 +11,9 @@ import { NotificationService } from 'src/app/services/Notification/notification.
 export class CoursesListPageComponent{
 
 
+  ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
 
 }

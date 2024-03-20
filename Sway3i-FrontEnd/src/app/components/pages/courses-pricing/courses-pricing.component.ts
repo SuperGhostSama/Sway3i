@@ -24,6 +24,9 @@ export class CoursesPricingComponent {
 
  
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    
     this.priceTransferService.getPrice().subscribe(price => {
       this.receivedPrice = price;
     });

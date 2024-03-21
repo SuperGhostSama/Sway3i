@@ -8,6 +8,7 @@ import com.sway3i.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,14 +20,6 @@ import java.util.Optional;
 public class CourseController {
 
     private final CourseService courseService;
-
-
-//    @GetMapping
-//    public ResponseEntity<List<CourseResponseDTO>> getAllCourses() {
-//        List<CourseResponseDTO> courses = courseService.getAllCourses();
-//        return new ResponseEntity<>(courses, HttpStatus.OK);
-//    }
-
 
 
     @GetMapping("/byEmail")

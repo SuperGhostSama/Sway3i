@@ -4,6 +4,7 @@ import com.sway3i.dto.Fees.Request.FeesRequestDTO;
 import com.sway3i.dto.Fees.Response.FeesResponseDTO;
 import com.sway3i.service.FeesService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/fees")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class FeesController {
 
     private final FeesService feesService;

@@ -7,6 +7,7 @@ import com.sway3i.service.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class ProgramController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<ProgramResponseDTO> createProgram(@RequestBody ProgramRequestDTO programRequest) {
         try {
@@ -45,6 +47,7 @@ public class ProgramController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ProgramResponseDTO> updateProgram(@PathVariable Long id,
                                                             @RequestBody ProgramRequestDTO updatedProgramRequest) {
@@ -56,6 +59,7 @@ public class ProgramController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProgram(@PathVariable Long id) {
         programService.deleteProgram(id);

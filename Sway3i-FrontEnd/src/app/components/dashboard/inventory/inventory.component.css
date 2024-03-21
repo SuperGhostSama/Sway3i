@@ -1,0 +1,18 @@
+
+#btn-purple {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #6B38FB;
+    background-color: #FFFFFF; 
+    border: 2px solid #6B38FB;
+    border-radius: 10px; 
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    font-weight: bold;
+}
+
+#btn-purple:hover {
+    color: #FFFFFF; 
+    background-color: #6B38FB; 
+}

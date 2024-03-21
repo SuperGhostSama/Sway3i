@@ -90,7 +90,7 @@ public class StudentsInCourseServiceImpl implements StudentsInCourseService {
 
 
     @Override
-    public boolean isStudentEnrolled(Long userId, Long courseId) {
+    public Optional<Course> isStudentEnrolled(Long userId, Long courseId) {
         return studentsInCourseRepository.isStudentEnrolled(userId, courseId);
     }
 

@@ -3,6 +3,7 @@ package com.sway3i.service;
 import com.sway3i.dto.StudentsInCourse.Request.StudentsInCourseRequestDTO;
 import com.sway3i.dto.StudentsInCourse.Response.EnrolledCourseResponseDTO;
 import com.sway3i.dto.StudentsInCourse.Response.StudentsInCourseResponseDTO;
+import com.sway3i.entities.Course;
 import com.sway3i.entities.StudentsInCourse;
 
 import java.util.List;
@@ -22,6 +23,6 @@ public interface StudentsInCourseService {
 
     List<EnrolledCourseResponseDTO> getEnrolledCoursesByStudentId(Long studentId);
 
-    boolean isStudentEnrolled(Long userId, Long courseId);
+    Optional<Course> isStudentEnrolled(Long userId, Long courseId);
 
 }

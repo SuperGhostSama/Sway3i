@@ -68,7 +68,11 @@ public class StudentsInCourseController {
     public boolean isStudentEnrolled(
             @RequestParam("userId") Long userId,
             @RequestParam("courseId") Long courseId) {
-        return studentsInCourseService.isStudentEnrolled(userId, courseId);
+        if(studentsInCourseService.isStudentEnrolled(userId, courseId).isPresent()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

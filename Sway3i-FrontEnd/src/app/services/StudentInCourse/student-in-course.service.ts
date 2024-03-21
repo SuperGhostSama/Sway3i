@@ -37,4 +37,13 @@ export class StudentsInCourseService {
   getEnrolledCoursesByStudentId(studentId: number): Observable<EnrolledCourseResponseDTO[]> {
     return this.http.get<EnrolledCourseResponseDTO[]>(`${this.apiUrl}/enrolled-courses/${studentId}`);
   }
+
+
+  isStudentEnrolled(studentId: number, courseId: number): any {    
+    return this.http.get<boolean>(`${this.apiUrl}/students/enrolled?userId=${studentId}&courseId=${courseId}`);
+  }
+
+
+
+
 }

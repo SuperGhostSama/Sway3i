@@ -50,7 +50,7 @@
 </div>
 
 
-<section>
+<section >
 
     <!-- Mentor Info -->
     <div class="container pt-4" style="position: relative;
@@ -112,11 +112,11 @@
     <div class="p-5" style="
         position: relative;
         top: -685px;">
-        <h3 class="text-center fw-bolder">{{ course.courseName }}</h3>
+        <h3 class="text-center fw-bolder" style="color: blue;">{{ course.courseName }}</h3>
     </div>
 
     <!-- Before Payment is completed -->
-    <section style="height: 47rem;">
+    <section style="height: 4rem;" *ngIf="!(isEnrolled$ | async)">
 
         <!-- The Card  -->
         <div class="container pt-4" 
@@ -219,7 +219,7 @@
 
 <!-- After payement is completed -->
 
-<section style="height: 20rem;">
+<section style="height: 1rem;" *ngIf="(isEnrolled$ | async)">
 
         <!-- The Card  -->
         <div class="container pt-4"
@@ -227,7 +227,7 @@
         width: fit-content;
         position: relative;
         left: 525px;
-        top: -337px;
+        top: -707px;
         "
         >
             <div class="card bg-white rounded-5 border-0" style="width: 30rem;">
@@ -295,7 +295,7 @@
     
             <div class="w-50 p-5" style="position: relative;
             left: 204px;
-            top: -1144px;">
+            top: -1314px;">
                 <h3 class="fw-bold">Course Details</h3>
                 <p>{{ course.courseDetails }}</p>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>
@@ -303,7 +303,7 @@
         
             <div class="w-50 p-5" style="position: relative;
             left: 204px;
-            top: -1144px;">
+            top: -1320px;">
                 <h3 class="fw-bold">Who this course is for?</h3>
                 <p>{{ course.courseIsFor }}</p>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere laudantium accusantium repellendus! Enim fugiat, temporibus sequi quod consectetur doloribus molestias, atque vero a quasi voluptas veritatis eligendi. Exercitationem ab, omnis magnam, molestiae ipsam natus quaerat recusandae dolorem beatae error rem suscipit officia. Quibusdam placeat at nisi aut, reprehenderit dolorum cumque earum sed autem perspiciatis ullam? Quibusdam quo reiciendis rem temporibus debitis, ad vitae! Consequatur officiis animi eligendi necessitatibus earum eveniet nesciunt sequi? Amet aspernatur id voluptatibus soluta laudantium dolor velit?</p>

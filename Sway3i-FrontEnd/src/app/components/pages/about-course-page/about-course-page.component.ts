@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CourseWithDetailsResponseDTO } from 'src/app/dto/Course/responses/course-with-details-response-DTO';
 import { CourseService } from 'src/app/services/Course/course.service';
 import { PriceTransferServiceService } from 'src/app/services/PriceTransferService/price-transfer-service.service';
+import { StudentsInCourseService } from 'src/app/services/StudentInCourse/student-in-course.service';
 
 @Component({
   selector: 'app-about-course-page',
@@ -12,19 +13,34 @@ import { PriceTransferServiceService } from 'src/app/services/PriceTransferServi
 })
 export class AboutCoursePageComponent {
 
-  courseId!: Number;
+  courseId!: number;
   course!: CourseWithDetailsResponseDTO;
+  isEnrolled$!: Observable<boolean>;
+
 
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
     private priceTransferService: PriceTransferServiceService,
+    private studentInCourseService: StudentsInCourseService,
     private router: Router
     ) {}
 
   ngOnInit(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const userIdStr = localStorage.getItem('id');
+    if (userIdStr) {
+        const userId = Number(userIdStr);
+        const courseIdParam = Number(this.route.snapshot.paramMap.get('id'));
     
+        this.isEnrolled$ = this.studentInCourseService.isStudentEnrolled(userId, courseIdParam);
+        
+        this.isEnrolled$.subscribe((isEnrolled) => {
+          console.log(isEnrolled);
+        });
+    }
+
     this.fetchCourseDetails();
   }
   

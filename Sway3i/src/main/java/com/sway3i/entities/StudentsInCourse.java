@@ -30,4 +30,7 @@ public class StudentsInCourse {
 
     @Enumerated(EnumType.STRING)
     private PricingPlan pricingPlan;
+
+
+
 }

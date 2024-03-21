@@ -35,6 +35,10 @@ public class User implements UserDetails {
     private String refreshToken;
     private boolean isValid;
 
+    //For testing
+    public User(long l, String john, String doe, String s, boolean b) {
+    }
+
     //SpringSecurity
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

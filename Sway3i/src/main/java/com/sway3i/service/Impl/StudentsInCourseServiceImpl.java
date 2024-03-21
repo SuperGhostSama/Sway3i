@@ -89,6 +89,10 @@ public class StudentsInCourseServiceImpl implements StudentsInCourseService {
     }
 
 
+    @Override
+    public boolean isStudentEnrolled(Long userId, Long courseId) {
+        return studentsInCourseRepository.isStudentEnrolled(userId, courseId);
+    }
 
     private StudentsInCourseResponseDTO convertToDTO(StudentsInCourse studentsInCourse) {
         return StudentsInCourseResponseDTO.builder()

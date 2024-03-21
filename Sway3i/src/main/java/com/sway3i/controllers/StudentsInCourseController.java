@@ -64,6 +64,11 @@ public class StudentsInCourseController {
         return new ResponseEntity<>(enrolledCourses, HttpStatus.OK);
     }
 
-
+    @GetMapping("/students/enrolled")
+    public boolean isStudentEnrolled(
+            @RequestParam("userId") Long userId,
+            @RequestParam("courseId") Long courseId) {
+        return studentsInCourseService.isStudentEnrolled(userId, courseId);
+    }
 
 }

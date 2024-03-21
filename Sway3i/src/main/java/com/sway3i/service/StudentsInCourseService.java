@@ -22,4 +22,6 @@ public interface StudentsInCourseService {
 
     List<EnrolledCourseResponseDTO> getEnrolledCoursesByStudentId(Long studentId);
 
+    boolean isStudentEnrolled(Long userId, Long courseId);
+
 }

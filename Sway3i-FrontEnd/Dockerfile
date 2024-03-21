@@ -16,6 +16,6 @@ RUN ng build --configuration=production
 
 FROM nginx:latest
 
-COPY --from=build app/dist/aftas-frontend /usr/share/nginx/html
+COPY --from=build app/dist/sway3i-frontend /usr/share/nginx/html
 
 EXPOSE 80

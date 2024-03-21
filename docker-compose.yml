@@ -2,9 +2,9 @@ version: '3'
 
 services:
   mysql:
-    image: mysql:8
+    image: mysql
     environment:
-      MYSQL_DATABASE: aftas
+      MYSQL_DATABASE: sway3i-v3
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root
 
@@ -19,7 +19,7 @@ services:
     ports:
       - "8081:8081"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sway3i-v3
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sway3i-v3?createDatabaseIfNotExist=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:

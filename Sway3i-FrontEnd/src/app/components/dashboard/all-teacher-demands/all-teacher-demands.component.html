@@ -19,8 +19,8 @@
           <td class="text-center fw-semibold">{{ demand.status }}</td>
 
           <td class="text-center">
-            <button type="button" class="btn btn-success me-2" [disabled]="demand.status.toString() === 'REJECTED'" (click)="acceptDemand(demand.id)">Accept</button>
-            <button type="button" class="btn btn-danger" [disabled]="demand.status.toString() === 'REJECTED'" (click)="rejectDemand(demand.id)">Refuse</button>
+            <button type="button" class="btn btn-success me-2" [disabled]="demand.status.toString() !== 'IN_PROGRESS'" (click)="acceptDemand(demand.id)">Accept</button>
+            <button type="button" class="btn btn-danger" [disabled]="demand.status.toString() !== 'IN_PROGRESS'" (click)="rejectDemand(demand.id)">Refuse</button>
           </td>
       </tr>
   

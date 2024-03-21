@@ -1,5 +1,6 @@
 package com.sway3i.dto.Role.Request;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GrantAuthoritiesRequestDto {
-    Long authorityId;
-    Long roleId;
+    @NotNull(message = "Authority ID cannot be null")
+    private Long authorityId;
+
+    @NotNull(message = "Role ID cannot be null")
+    private Long roleId;
 }
 

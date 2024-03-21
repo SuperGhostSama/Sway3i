@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: aftas
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+
+    ports:
+      - "3306:3306"
+
+  backend:
+    build: 
+      context: ./Sway3i
+      dockerfile: Dockerfile
+   
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sway3i-v3
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - mysql
+
+  frontend:
+    build: 
+      context: ./Sway3i-FrontEnd
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    

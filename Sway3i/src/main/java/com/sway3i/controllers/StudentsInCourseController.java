@@ -7,6 +7,7 @@ import com.sway3i.service.StudentsInCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,18 +37,21 @@ public class StudentsInCourseController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<StudentsInCourseResponseDTO> createStudentsInCourse(@RequestBody StudentsInCourseRequestDTO studentsInCourseRequest) {
         StudentsInCourseResponseDTO createdStudentsInCourse = studentsInCourseService.createStudentsInCourse(studentsInCourseRequest);
         return new ResponseEntity<>(createdStudentsInCourse, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<StudentsInCourseResponseDTO> updateStudentsInCourse(@PathVariable Long id, @RequestBody StudentsInCourseRequestDTO updatedStudentsInCourseRequest) {
         StudentsInCourseResponseDTO updatedStudentsInCourseResponse = studentsInCourseService.updateStudentsInCourse(id, updatedStudentsInCourseRequest);
         return new ResponseEntity<>(updatedStudentsInCourseResponse, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudentsInCourse(@PathVariable Long id) {
         studentsInCourseService.deleteStudentsInCourse(id);

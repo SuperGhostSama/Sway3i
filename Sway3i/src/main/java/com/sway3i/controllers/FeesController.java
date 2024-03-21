@@ -27,16 +27,19 @@ public class FeesController {
         return feesService.getFeesById(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public FeesResponseDTO createFees(@RequestBody FeesRequestDTO feesRequest) {
         return feesService.createFees(feesRequest);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public FeesResponseDTO updateFees(@PathVariable Long id, @RequestBody FeesRequestDTO updatedFeesRequest) {
         return feesService.updateFees(id, updatedFeesRequest);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public void deleteFees(@PathVariable Long id) {
         feesService.deleteFees(id);

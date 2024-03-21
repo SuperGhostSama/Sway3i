@@ -27,7 +27,13 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( auth -> auth
-                        .requestMatchers("/api/v1/auth/**","/api/v1/courses/latest" ,"/api/v1/courses/all", "/api/v1/courses/{id}", "/api/v1/course-pricing/calculate-discounted-prices" ).permitAll()
+                        .requestMatchers(
+                                "/api/v1/auth/**",
+                                "/api/v1/courses/latest",
+                                "/api/v1/courses/all",
+                                "/api/v1/courses/{id}",
+                                "/api/v1/course-pricing/calculate-discounted-prices"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

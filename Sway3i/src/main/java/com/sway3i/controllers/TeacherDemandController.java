@@ -10,6 +10,7 @@ import com.sway3i.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class TeacherDemandController {
         this.teacherDemandService = teacherDemandService;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<TeacherDemandResponseDTO>> getAllTeacherDemands() {
         List<TeacherDemandResponseDTO> teacherDemands = teacherDemandService.getAllTeacherDemands();
@@ -38,29 +40,34 @@ public class TeacherDemandController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
     @GetMapping("/teacher-demands")
     public List<TeacherDemand> getTeacherDemandsByEmail(@RequestParam String email) {
         return teacherDemandService.getTeacherDemandsByEmail(email);
     }
 
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
     @PostMapping
     public ResponseEntity<TeacherDemandResponseDTO> createTeacherDemand(@RequestBody TeacherDemandRequestDTO teacherDemandRequest) {
         TeacherDemandResponseDTO createdTeacherDemand = teacherDemandService.createTeacherDemand(teacherDemandRequest);
         return new ResponseEntity<>(createdTeacherDemand, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTeacherDemand(@PathVariable Long id) {
         teacherDemandService.deleteTeacherDemand(id);
         return ResponseEntity.noContent().build();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/{id}/accept")
     public ResponseEntity<Void> acceptTeacherDemand(@PathVariable Long id) {
         teacherDemandService.acceptTeacherDemand(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/{id}/reject")
     public ResponseEntity<Void> rejectTeacherDemand(@PathVariable Long id) {
         teacherDemandService.rejectTeacherDemand(id);

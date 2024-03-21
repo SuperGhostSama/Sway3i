@@ -26,5 +26,11 @@ public class Program {
 
     @ManyToMany(mappedBy = "programs")
     private List<Course> courses;
+
+
+    //for unit testing
+    public Program(long l, String monday, String s) {
+
+    }
 }
 

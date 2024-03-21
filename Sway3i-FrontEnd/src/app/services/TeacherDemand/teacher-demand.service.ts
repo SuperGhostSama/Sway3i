@@ -38,6 +38,6 @@ export class TeacherDemandService {
   }
 
   getTeacherDemandsByEmail(email: string): Observable<TeacherDemandResponseDTO[]> {
-    return this.http.get<TeacherDemandResponseDTO[]>(`${this.apiUrl}?email=${email}`);
+    return this.http.get<TeacherDemandResponseDTO[]>(`${this.apiUrl}/teacher-demands?email=${email}`);
   }
 }

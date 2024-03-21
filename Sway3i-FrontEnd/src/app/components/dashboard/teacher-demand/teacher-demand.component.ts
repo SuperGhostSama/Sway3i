@@ -28,10 +28,9 @@ export class TeacherDemandComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    // Retrieve email from localStorage
+
     const email = localStorage.getItem('email');
     if (email) {
-      // Call the method to fetch teacher demands using the retrieved email
       this.getTeacherDemandsByEmail(email);
     } else {
       console.error('Email not found in localStorage.');

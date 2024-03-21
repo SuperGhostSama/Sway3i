@@ -63,4 +63,7 @@ public class StudentsInCourseController {
         List<EnrolledCourseResponseDTO> enrolledCourses = studentsInCourseService.getEnrolledCoursesByStudentId(studentId);
         return new ResponseEntity<>(enrolledCourses, HttpStatus.OK);
     }
+
+
+
 }

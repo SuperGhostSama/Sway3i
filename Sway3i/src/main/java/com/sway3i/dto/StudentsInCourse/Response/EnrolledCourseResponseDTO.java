@@ -19,10 +19,13 @@ public class EnrolledCourseResponseDTO {
     private boolean isExpired;
     private Long studentId;
     private Long courseId;
+    private String courseName;
     private String courseDetails;
     private String courseSubject;
     private String createdByFirstName;
     private String createdByLastName;
     private String createdByCity;
     private PricingPlan pricingPlan;
+    private String link;
+    private String address;
 }

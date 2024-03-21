@@ -75,12 +75,15 @@ public class StudentsInCourseServiceImpl implements StudentsInCourseService {
                         .isExpired(studentsInCourse.isExpired())
                         .studentId(studentsInCourse.getStudent().getId())
                         .courseId(studentsInCourse.getCourse().getId())
+                        .courseName(studentsInCourse.getCourse().getCourseName())
                         .courseDetails(studentsInCourse.getCourse().getCourseDetails())
                         .courseSubject(studentsInCourse.getCourse().getSubject())
                         .createdByFirstName(studentsInCourse.getCourse().getCreatedBy().getFirstName())
                         .createdByLastName(studentsInCourse.getCourse().getCreatedBy().getLastName())
                         .createdByCity(studentsInCourse.getCourse().getCreatedBy().getCity())
                         .pricingPlan(studentsInCourse.getPricingPlan())
+                        .address(studentsInCourse.getCourse().getAddress())
+                        .link(studentsInCourse.getCourse().getLink())
                         .build())
                 .collect(Collectors.toList());
     }
